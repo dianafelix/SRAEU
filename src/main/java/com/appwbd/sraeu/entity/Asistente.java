@@ -22,17 +22,19 @@ public class Asistente {
     private String telefono;
     @Column(name="lugar")
     private String lugar;
+    @Column(name="tipo")
+    private String tipo;
 
 
 
-
-    public Asistente(int id, String nombre,String apellido, String correo, String telefono, String lugar) {
+    public Asistente(int id, String nombre,String apellido, String correo, String telefono, String lugar, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
         this.lugar = lugar;
+        this.tipo = tipo;
 
     }
 
