@@ -1,6 +1,6 @@
-package com.appwbd.sraeu.Component;
+package com.appwbd.sraeu.component;
 
-import com.appwbd.sraeu.Model.EventoModel;
+import com.appwbd.sraeu.model.EventoModel;
 import com.appwbd.sraeu.entity.Evento;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,6 @@ public class EventoConverter {
 
         evento.setId(eventoModel.getId());
         evento.setCupo(eventoModel.getCupo());
-        evento.setLugar(eventoModel.getLugar());
         evento.setNombre(eventoModel.getNombre());
         evento.setFechaI(fech);
         evento.setFechaF(fech1);
@@ -30,7 +29,6 @@ public class EventoConverter {
     EventoModel eventoModel = new EventoModel();
     eventoModel.setId(evento.getId());
     eventoModel.setCupo(evento.getCupo());
-    eventoModel.setLugar(evento.getLugar());
     eventoModel.setFechaF(evento.getFechaF().toString());
     eventoModel.setFechaI(evento.getFechaI().toString());
 

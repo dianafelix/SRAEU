@@ -1,6 +1,6 @@
-package com.appwbd.sraeu.Component;
+package com.appwbd.sraeu.component;
 
-import com.appwbd.sraeu.Model.UsuarioModel;
+import com.appwbd.sraeu.model.UsuarioModel;
 import com.appwbd.sraeu.entity.Usuario;
 import org.springframework.stereotype.Component;
 

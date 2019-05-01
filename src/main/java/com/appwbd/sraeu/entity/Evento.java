@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
 
+
 @Data
 @Entity
 @Table(name="evento")
@@ -19,8 +20,6 @@ public class Evento {
     private Date fechaI;
     @Column(name = "fechaF")
     private Date fechaF;
-    @Column(name = "lugar")
-    private String lugar;
     @Column(name = "cupo")
     private int cupo;
 
@@ -30,13 +29,16 @@ public class Evento {
             inverseJoinColumns = @JoinColumn(name = "asistente_id", referencedColumnName = "id"))
     private Set<Asistente> asistentes;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lugar")
+    private Lugar lugar;
 
-    public Evento(int id, String nombre, Date fechaI, Date fechaF, String lugar, int cupo) {
+
+    public Evento(int id, String nombre, Date fechaI, Date fechaF, int cupo) {
         this.id = id;
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;
-        this.lugar = lugar;
         this.cupo = cupo;
 
     }

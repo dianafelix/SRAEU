@@ -1,4 +1,4 @@
-package com.appwbd.sraeu.Model;
+package com.appwbd.sraeu.model;
 
 import lombok.Data;
 

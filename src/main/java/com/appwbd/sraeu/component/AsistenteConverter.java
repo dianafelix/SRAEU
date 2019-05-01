@@ -1,6 +1,6 @@
-package com.appwbd.sraeu.Component;
+package com.appwbd.sraeu.component;
 
-import com.appwbd.sraeu.Model.AsistenteModel;
+import com.appwbd.sraeu.model.AsistenteModel;
 import com.appwbd.sraeu.entity.Asistente;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +13,6 @@ public class AsistenteConverter {
         asistente.setNombre(asistenteModel.getNombre());
         asistente.setApellido(asistenteModel.getApellido());
         asistente.setCorreo(asistenteModel.getCorreo());
-        asistente.setLugar(asistenteModel.getLugar());
         asistente.setTelefono(asistenteModel.getTelefono());
         asistente.setTipo(asistenteModel.getTipo());
         return asistente;
@@ -25,7 +24,6 @@ public class AsistenteConverter {
         asistenteModel.setNombre(asistenteModel.getNombre());
         asistenteModel.setApellido(asistenteModel.getApellido());
         asistenteModel.setCorreo(asistenteModel.getApellido());
-        asistenteModel.setLugar(asistenteModel.getLugar());
         asistenteModel.setTelefono(asistenteModel.getTelefono());
         asistenteModel.setTipo(asistenteModel.getTipo());
         return asistenteModel;
