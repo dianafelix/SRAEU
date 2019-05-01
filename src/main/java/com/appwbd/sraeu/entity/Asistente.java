@@ -2,6 +2,7 @@ package com.appwbd.sraeu.entity;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -24,6 +25,9 @@ public class Asistente {
     private String lugar;
     @Column(name="tipo")
     private String tipo;
+
+    @ManyToMany(mappedBy = "asistentes")
+    private Set<Evento> eventos = new HashSet<>(); // Los productos que aplican en la promocion
 
 
 
