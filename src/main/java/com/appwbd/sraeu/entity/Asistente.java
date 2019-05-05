@@ -25,7 +25,7 @@ public class Asistente {
     private String tipo;
 
     @ManyToMany(mappedBy = "asistentes")
-    private Set<Evento> eventos = new HashSet<>(); // Los productos que aplican en la promocion
+    private Set<Evento> eventos = new HashSet<>();
 
 
 

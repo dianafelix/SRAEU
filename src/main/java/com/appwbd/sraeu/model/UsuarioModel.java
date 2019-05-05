@@ -5,13 +5,17 @@ import lombok.Data;
 @Data
 public class UsuarioModel {
 
-    private int id;
-    private String usuario;
+    private String username;
     private String password;
-    private String nivel;
+    private String tipo;
 
     public UsuarioModel(){
+    }
 
+    public UsuarioModel(String username, String password, String tipo) {
+        this.username = username;
+        this.password = password;
+        this.tipo = tipo;
     }
 }
 

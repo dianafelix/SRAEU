@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add/modify Users</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Usuario Form</h1>
+        <br/>
+        <form action="#" th:action="@{/usuarios/addusuario}" th:object="${usuarioModel}" method="post">
+            Username: <input type="text" class="form-control" th:field="*{username}" th:value="${username}"></input>
+            <br/>
+            Password: <input type="text" class="form-control" th:field="*{password}" th:value="${password}"></input>
+            <br/>
+            Tipo de Usuario:
+            <fieldset id="opc">
+                <label>
+                    <br>
+                    <input type="radio" name="ena" class="form-control" th:field="*{tipo}" th:value="Administrador">
+                    Administrador
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="ena" class="form-control" th:field="*{tipo}" th:value="General">
+                    General
+                </label>
+            </fieldset>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Accept
+            </button>
+
+        </form>
+        <a href="#" th:href="@{/usuarios/cancel}">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+            </button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

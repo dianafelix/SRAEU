@@ -9,22 +9,19 @@ import javax.persistence.*;
 public class Usuario {
 
     @Id
-    @Column(name = "id")
-    private int id;
-    @Column(name="usuario")
-    private String usuario;
+    @Column(name="username")
+    private String username;
     @Column(name="password")
     private String password;
-    @Column(name="nivel")
-    private String nivel;
+    @Column(name="tipo")
+    private String tipo;
 
 
 
-    public Usuario(int id, String usuario, String password, String nivel ) {
-        this.id = id;
-        this.usuario = usuario;
+    public Usuario(String username, String password, String tipo ) {
+        this.username = username;
         this.password = password;
-        this.nivel = nivel;
+        this.tipo = tipo;
     }
 
     public Usuario(){

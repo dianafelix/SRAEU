@@ -1,26 +1,25 @@
 package com.appwbd.sraeu.component;
 
-import com.appwbd.sraeu.model.UsuarioModel;
 import com.appwbd.sraeu.entity.Usuario;
+import com.appwbd.sraeu.model.UsuarioModel;
 import org.springframework.stereotype.Component;
 
 @Component("usuarioConverter")
 
 public class UsuarioConverter {
-    Usuario convertUsuarioModel2Usuario(UsuarioModel usuarioModel) {
+    public Usuario convertUsuarioModel2Usuario(UsuarioModel usuarioModel) {
         Usuario usuario = new Usuario();
-        usuario.setId(usuarioModel.getId());
-        usuario.setNivel(usuarioModel.getNivel());
+        usuario.setUsername(usuarioModel.getUsername());
         usuario.setPassword(usuarioModel.getPassword());
-        usuario.setNivel(usuarioModel.getNivel());
+        usuario.setTipo(usuarioModel.getTipo());
         return usuario;
     }
 
     public UsuarioModel convertUsuario2UsuarioModel(Usuario usuario){
         UsuarioModel usuarioModel = new UsuarioModel();
-        usuarioModel.setId(usuarioModel.getId());
-        usuarioModel.setNivel(usuarioModel.getNivel());
-        usuarioModel.setPassword(usuarioModel.getPassword());
+        usuarioModel.setUsername(usuario.getUsername());
+        usuarioModel.setPassword(usuario.getPassword());
+        usuarioModel.setTipo(usuario.getTipo());
         return usuarioModel;
     }
 }
