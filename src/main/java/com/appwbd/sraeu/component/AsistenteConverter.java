@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component("asistenteConverter")
 public class AsistenteConverter {
 
-     Asistente convertAsistenteModel2Asistente(AsistenteModel asistenteModel) {
+     public Asistente convertAsistenteModel2Asistente(AsistenteModel asistenteModel) {
         Asistente asistente = new Asistente();
         asistente.setId(asistenteModel.getId());
         asistente.setNombre(asistenteModel.getNombre());
@@ -20,12 +20,12 @@ public class AsistenteConverter {
 
     public AsistenteModel convertAsistente2AsistenteModel(Asistente asistente){
         AsistenteModel asistenteModel = new AsistenteModel();
-        asistenteModel.setId(asistenteModel.getId());
-        asistenteModel.setNombre(asistenteModel.getNombre());
-        asistenteModel.setApellido(asistenteModel.getApellido());
-        asistenteModel.setCorreo(asistenteModel.getApellido());
-        asistenteModel.setTelefono(asistenteModel.getTelefono());
-        asistenteModel.setTipo(asistenteModel.getTipo());
+        asistenteModel.setId(asistente.getId());
+        asistenteModel.setNombre(asistente.getNombre());
+        asistenteModel.setApellido(asistente.getApellido());
+        asistenteModel.setCorreo(asistente.getCorreo());
+        asistenteModel.setTelefono(asistente.getTelefono());
+        asistenteModel.setTipo(asistente.getTipo());
         return asistenteModel;
     }
 }
