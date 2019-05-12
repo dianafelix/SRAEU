@@ -31,9 +31,13 @@ public class AsistenteController {
     @GetMapping("/asistenteForm")
     public String redirectAsistenteForm(Model model, @RequestParam(name = "id", required = false) int id) {
         AsistenteModel asistenteModel = new AsistenteModel();
-        if(id != 0)
+        boolean b = true;
+        if(id != 0) {
             asistenteModel = asistenteService.findAsistenteByIdModel(id);
+            b = false;
+        }
         model.addAttribute("asistenteModel",asistenteModel);
+        model.addAttribute("b",b);
         return ViewConstant.ASISTENTE_FORM;
     }
 
@@ -52,5 +56,11 @@ public class AsistenteController {
         ModelAndView mav = new ModelAndView(ViewConstant.ASISTENTES);
         mav.addObject("asistentes",asistenteService.listAllAsistentes());
         return mav;
+    }
+
+    @GetMapping("/removeAsistente")
+    public ModelAndView removeAsistente(@RequestParam(name = "id",required = true)int id) {
+        asistenteService.removeAsistente(id);
+        return showAsistentes();
     }
 }

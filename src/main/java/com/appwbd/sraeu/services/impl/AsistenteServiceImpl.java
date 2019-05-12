@@ -51,4 +51,11 @@ public class AsistenteServiceImpl implements AsistenteService {
     public AsistenteModel findAsistenteByIdModel(int i) {
         return asistenteConverter.convertAsistente2AsistenteModel(findAsistenteById(i));
     }
+
+    @Override
+    public void removeAsistente(int id) {
+        Asistente asistente = findAsistenteById(id);
+        if(asistente != null)
+            asistenteRepository.delete(findAsistenteById(id));
+    }
 }

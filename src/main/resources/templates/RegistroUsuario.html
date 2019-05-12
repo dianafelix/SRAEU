@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Aplicaciones &mdash; SRAEU</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link rel="stylesheet" href="#" th:href="@{/fonts/icomoon/style.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/jquery-ui.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap-datepicker.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/mediaelementplayer.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="#" th:href="@{/fonts/flaticon/font/flaticon.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/fl-bigmug-line.css}">
+
+
+    <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
+
+    <!--<link rel="stylesheet" href="#" th:href="@{/css/style.css}">-->
+
+  </head>
+  <body>
+
+  <div class="site-loader"></div>
+
+  <div class="site-wrap">
+
+
+
+    <div class="site-navbar">
+        <div class="container py-1">
+          <div class="row align-items-center">
+            <div class="col-8 col-md-8 col-lg-4">
+              <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong><span class="text-danger"></span></strong></a></h1>
+            </div>
+            <div class="col-4 col-md-4 col-lg-8">
+              <nav class="site-navigation text-right text-md-right" role="navigation">
+
+                <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li>
+                    <a href="index.html">Inicio</a>
+                  </li>
+                  <li class="has-children">
+                    <a href="#">Registros</a>
+                    <ul class="dropdown">
+                      <li class="has-children">
+                          <a th:href="@{/usuarios/usuarioForm?username=none}">Registro de usuario</a>
+                          <ul class="dropdown">
+                              <li><a th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
+                        </ul>
+                      </li>
+
+                      <li class="has-children">
+                        <a th:href="@{/asistentes/asistenteForm?id=0}">Registro Asistencia</a>
+                        <ul class="dropdown">
+                          <li><a th:href="@{/asistentes/showAsistentes}">Consulta</a></li>
+                        </ul>
+                      </li>
+
+                      <li class="has-children">
+                        <a href="RegistroEvento.html">Registro evento</a>
+                        <ul class="dropdown">
+
+                          <li><a href="ConsultaEvento.html">consulta</a></li>
+
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a href="Log.html">Inicio Sesion</a></li>
+                  <li> <a href="l">salir</a></li>
+                </ul>
+              </nav>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-blocks-cover inner-page-cover " style="background-image: url(static/images/fondo.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-10">
+            <h1 class="mb-2">Registro de Usuario </h1>
+            <div><a href="index.html">Inicio</a> <span class="mx-2 text-white">&bullet;</span> <strong class="text-white">Registro</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-12 col-lg-8 mb-5">
+
+
+
+            <form action="#" th:action="@{/usuarios/addusuario}" th:object="${usuarioModel}" method="post" class="p-5 bg-white border">
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="email">Nombre de usuario</label>
+                  <input type="text" id="email" class="form-control" placeholder="Usuario" th:field="*{username}" th:value="${username}" th:if="${b}">
+                  <input type="text" id="email" class="form-control" placeholder="Usuario" th:field="*{username}" th:value="${username}" th:if="${!b}" readonly>
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="email">Contraseña</label>
+                  <input type="text" id="subject" class="form-control" placeholder="Contraseña" th:field="*{password}" th:value="${password}">
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12"  th:if="${!b}" readonly>
+                  <label class="font-weight-bold" for="email">Activo:</label>
+                    <input type="checkbox" name="ena" class="form-control" th:field="*{enable}" th:value="${enable}">
+                </div>
+              </div>
+
+
+
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Registrar" class="btn btn-primary  py-2 px-4 rounded-0">
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="site-section site-section-sm bg-primary">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h2 class="text-white">UABC Mexicali</h2>
+            <p class="lead text-white-5">Sistema de Registro de Asistencia a Eventos Universitarios</p>
+          </div>
+          <div class="col-md-4 text-center">
+            <a th:href="@{/asistentes/asistenteForm?id=0}" class="btn btn-outline-primary btn-block py-3 btn-lg">Registrate!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+  <script th:src="@{js/jquery-3.3.1.min.js}"></script>
+  <script th:src="@{js/jquery-migrate-3.0.1.min.js}"></script>
+  <script th:src="@{js/jquery-ui.js}"></script>
+  <script th:src="@{js/popper.min.js}"></script>
+  <script th:src="@{js/bootstrap.min.js}"></script>
+  <script th:src="@{js/owl.carousel.min.js}"></script>
+  <script th:src="@{js/mediaelement-and-player.min.js}"></script>
+  <script th:src="@{js/jquery.stellar.min.js}"></script>
+  <script th:src="@{js/jquery.countdown.min.js}"></script>
+  <script th:src="@{js/jquery.magnific-popup.min.js}"></script>
+  <script th:src="@{js/bootstrap-datepicker.min.js}"></script>
+  <script th:src="@{js/aos.js}"></script>
+
+  <script th:src="@{js/main.js}"></script>
+
+  </body>
+</html>

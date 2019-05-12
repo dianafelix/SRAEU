@@ -13,7 +13,7 @@ public class Asistente {
     @Id
     @Column(name = "id")
     private int id;
-    @Column(name="nombre")
+    @Column(name="nombre", unique = true, nullable = false)
     private String nombre;
     @Column(name="apellido")
     private String apellido;

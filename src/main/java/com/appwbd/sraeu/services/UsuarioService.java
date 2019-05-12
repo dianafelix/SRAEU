@@ -15,4 +15,6 @@ public interface UsuarioService {
     public abstract Usuario findUserByUsername(String username);
 
     public abstract UsuarioModel findUserByUsernameModel(String username);
+
+    public abstract void removeUser(String username);
 }

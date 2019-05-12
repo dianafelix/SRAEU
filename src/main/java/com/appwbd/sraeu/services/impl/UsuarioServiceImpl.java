@@ -44,11 +44,19 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario findUserByUsername(String username) {
+
         return usuarioRepository.findByUsername(username);
     }
 
     @Override
     public UsuarioModel findUserByUsernameModel(String username) {
         return usuarioConverter.convertUsuario2UsuarioModel(findUserByUsername(username));
+    }
+
+    @Override
+    public void removeUser(String username) {
+        Usuario usuario = findUserByUsername(username);
+        if(usuario != null)
+            usuarioRepository.delete(findUserByUsername(username));
     }
 }

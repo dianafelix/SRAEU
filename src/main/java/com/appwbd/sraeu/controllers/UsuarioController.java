@@ -23,16 +23,18 @@ public class UsuarioController {
     private static final Log log = LogFactory.getLog(UsuarioController.class);
 
     @GetMapping("/cancel")
-    public String cancel() {
-        return "redirect:/usuarios/showUsuarios";
-    }
+    public String cancel() {return "redirect:/usuarios/showUsuarios";}
 
     @GetMapping("/usuarioForm")
     public String redirectUserForm(Model model, @RequestParam(name = "username", required = false) String username) {
         UsuarioModel usuarioModel = new UsuarioModel();
-        if(!username.equals("none"))
+        boolean b = true;
+        if(!username.equals("none")) {
             usuarioModel = usuarioService.findUserByUsernameModel(username);
+            b = false;
+        }
         model.addAttribute("usuarioModel",usuarioModel);
+        model.addAttribute("b",b);
         return ViewConstant.USUARIO_FORM;
     }
 
@@ -51,5 +53,11 @@ public class UsuarioController {
         ModelAndView mav = new ModelAndView(ViewConstant.USUARIOS);
         mav.addObject("usuarios",usuarioService.listAllUsers());
         return mav;
+    }
+
+    @GetMapping("/removeUsuario")
+    public ModelAndView removeUsuario(@RequestParam(name = "username",required = true)String username){
+        usuarioService.removeUser(username);
+        return showUsers();
     }
 }

@@ -11,7 +11,9 @@ public class UsuarioConverter {
         Usuario usuario = new Usuario();
         usuario.setUsername(usuarioModel.getUsername());
         usuario.setPassword(usuarioModel.getPassword());
-        usuario.setTipo(usuarioModel.getTipo());
+        usuario.setEnable(usuarioModel.isEnable());
+        usuario.setTipoUsuario(usuarioModel.getTipoUsuario());
+
         return usuario;
     }
 
@@ -19,7 +21,9 @@ public class UsuarioConverter {
         UsuarioModel usuarioModel = new UsuarioModel();
         usuarioModel.setUsername(usuario.getUsername());
         usuarioModel.setPassword(usuario.getPassword());
-        usuarioModel.setTipo(usuario.getTipo());
+        usuarioModel.setEnable(usuario.isEnable());
+        usuarioModel.setTipoUsuario(usuario.getTipoUsuario());
+
         return usuarioModel;
     }
 }

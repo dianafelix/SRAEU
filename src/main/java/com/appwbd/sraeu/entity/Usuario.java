@@ -9,19 +9,20 @@ import javax.persistence.*;
 public class Usuario {
 
     @Id
-    @Column(name="username")
+    @Column(name="username", unique = true, nullable = false)
     private String username;
     @Column(name="password")
     private String password;
-    @Column(name="tipo")
-    private String tipo;
+    @Column(name="enable")
+    private boolean enable;
 
+    @ManyToOne
+    @JoinColumn
+    private TipoUsuario tipoUsuario;
 
-
-    public Usuario(String username, String password, String tipo ) {
+    public Usuario(String username, String password) {
         this.username = username;
         this.password = password;
-        this.tipo = tipo;
     }
 
     public Usuario(){
