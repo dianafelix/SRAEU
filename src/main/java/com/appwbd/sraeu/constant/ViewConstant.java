@@ -9,4 +9,7 @@ public class ViewConstant {
 
     public static final String TIPOUSUARIO_FORM = "tipousuarioform";
     public static final String TIPOSUSUARIO = "tipousuario";
+
+    public static final String EVENTO_FORM = "RegistroEvento";
+    public static final String EVENTOS = "ConsultaEvento" ;
 }

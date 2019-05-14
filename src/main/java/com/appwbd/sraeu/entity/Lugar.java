@@ -12,16 +12,21 @@ public class Lugar {
     @Id
     @Column(name = "id")
     private int id;
+    @Column(name="nombre")
+    private String nombre;
     @Column(name="direccion")
     private String direccion;
 
-    @OneToMany(mappedBy = "lugar", cascade = CascadeType.ALL)
-    private Set<Evento> eventoLugares;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "lugar_evento",
+            joinColumns = @JoinColumn(name = "lugar_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "evento_id", referencedColumnName = "id"))
+    private Set<Evento> eventos;
 
 
-    public Lugar(int id, String direccion ) {
+    public Lugar(int id, String nombre ) {
         this.id = id;
-        this.direccion = direccion;
+        this.nombre = nombre;
     }
 
     public Lugar(){

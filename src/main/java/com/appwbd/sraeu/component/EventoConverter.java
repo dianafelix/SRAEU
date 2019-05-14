@@ -10,7 +10,7 @@ import java.util.Date;
 @Component("eventoConverter")
 public class EventoConverter {
 
-    Evento convertEventoToModel2Evento(EventoModel eventoModel)throws Exception {
+    public Evento convertEventoToModel2Evento(EventoModel eventoModel)throws Exception {
         String fecha = eventoModel.getFechaF();
         Date fech = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
         String fecha1 = eventoModel.getFechaI();
@@ -22,6 +22,8 @@ public class EventoConverter {
         evento.setNombre(eventoModel.getNombre());
         evento.setFechaI(fech);
         evento.setFechaF(fech1);
+        evento.setLugares(eventoModel.getLugares());
+        evento.setAsistentes(eventoModel.getAsistentes());
         return evento;
     }
 
@@ -31,7 +33,8 @@ public class EventoConverter {
     eventoModel.setCupo(evento.getCupo());
     eventoModel.setFechaF(evento.getFechaF().toString());
     eventoModel.setFechaI(evento.getFechaI().toString());
-
+    eventoModel.setLugares(evento.getLugares());
+    eventoModel.setAsistentes(evento.getAsistentes());
     return eventoModel;
     }
 }

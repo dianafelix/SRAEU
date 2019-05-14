@@ -3,6 +3,7 @@ package com.appwbd.sraeu.entity;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -12,6 +13,7 @@ import java.util.Set;
 public class Evento {
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
     @Column(name = "nombre")
@@ -29,13 +31,11 @@ public class Evento {
             inverseJoinColumns = @JoinColumn(name = "asistente_id", referencedColumnName = "id"))
     private Set<Asistente> asistentes;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lugar")
-    private Lugar lugar;
+    @ManyToMany(mappedBy = "eventos", fetch = FetchType.EAGER)
+    private Set<Lugar> lugares = new HashSet<>();
 
 
-    public Evento(int id, String nombre, Date fechaI, Date fechaF, int cupo) {
-        this.id = id;
+    public Evento(String nombre, Date fechaI, Date fechaF, int cupo) {
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;

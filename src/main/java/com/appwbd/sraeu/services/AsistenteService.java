@@ -14,7 +14,7 @@ public interface AsistenteService {
 
     public abstract Asistente findAsistenteById(int id);
 
-    public abstract AsistenteModel findAsistenteByIdModel(int i);
+    public abstract AsistenteModel findAsistenteByIdModel(int id);
 
     public abstract void removeAsistente(int id);
 }
