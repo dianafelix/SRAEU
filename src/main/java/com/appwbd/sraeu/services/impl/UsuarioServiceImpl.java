@@ -6,6 +6,7 @@ import com.appwbd.sraeu.model.UsuarioModel;
 import com.appwbd.sraeu.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.appwbd.sraeu.repository.UsuarioRepository;
 
@@ -23,12 +24,15 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Qualifier("usuarioConverter")
     private UsuarioConverter usuarioConverter;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public UsuarioModel addUser(UsuarioModel usuarioModel) {
-       Usuario temp = usuarioConverter.convertUsuarioModel2Usuario(usuarioModel);
-       Usuario usuario = usuarioRepository.save(temp);
-
-       return usuarioConverter.convertUsuario2UsuarioModel(usuario);
+        usuarioModel.setPassword(bCryptPasswordEncoder.encode(usuarioModel.getPassword()));
+        Usuario temp = usuarioConverter.convertUsuarioModel2Usuario(usuarioModel);
+        Usuario usuario = usuarioRepository.save(temp);
+        return usuarioConverter.convertUsuario2UsuarioModel(usuario);
     }
 
     @Override
