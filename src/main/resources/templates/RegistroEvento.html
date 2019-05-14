@@ -66,10 +66,10 @@
                                     </li>
 
                                     <li class="has-children">
-                                        <a href="RegistroEvento.html">Registro evento</a>
+                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro evento</a>
                                         <ul class="dropdown">
 
-                                            <li><a href="ConsultaEvento.html">consulta</a></li>
+                                            <li><a th:href="@{/eventos/showEventos}">consulta</a></li>
 
                                         </ul>
                                     </li>
@@ -118,29 +118,29 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Fecha de Inicio:</label>
-                            <input type="date" id="email" class="form-control" placeholder="FechaI" th:field="*{fechaI}" th:value="${fechaI}" required>
+                            <input type="date" id="email" class="form-control"  th:field="*{fechaI}" th:value="${fechaI}" required>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Fecha de Fin:</label>
-                            <input type="date" id="email" class="form-control" placeholder="FechaF" th:field="*{fechaF}" th:value="${fechaF}" required>
+                            <input type="date" id="email" class="form-control"  th:field="*{fechaF}" th:value="${fechaF}" required>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Cupo:</label>
-                            <input type="number" id="subject" class="form-control" placeholder="Correo" th:field="*{cupo}" th:value="${cupo}"  min="0" required>
+                            <input type="number" id="subject" class="form-control" placeholder="Cupo" th:field="*{cupo}" th:value="${cupo}"  min="0" required>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <!--<div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Lugar:</label>
-                            <select th:each="lugar : ${lugarModels}"  th:field="*{lugar}">
-                                <option th:value="${lugar.id}" th:text="${lugar.nombre}">
+                            <select   th:field="*{lugar}">
+                                <option th:each="lugar : ${lugarModels}" th:value="${lugar.id}" th:text="${lugar.nombre}">
                             </select>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="row form-group">
                         <div class="col-md-12">
                             <input type="submit" value="Registrar" class="btn btn-primary  py-2 px-4 rounded-0">

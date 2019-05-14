@@ -2,9 +2,11 @@ package com.appwbd.sraeu.controllers;
 
 
 import com.appwbd.sraeu.constant.ViewConstant;
+import com.appwbd.sraeu.entity.Lugar;
 import com.appwbd.sraeu.model.AsistenteModel;
 import com.appwbd.sraeu.model.EventoModel;
 import com.appwbd.sraeu.model.LugarModel;
+import com.appwbd.sraeu.repository.LugarRepository;
 import com.appwbd.sraeu.services.AsistenteService;
 import com.appwbd.sraeu.services.EventoService;
 import com.appwbd.sraeu.services.LugarService;
@@ -47,16 +49,16 @@ public class EventoController {
     @GetMapping("/eventoForm")
     public String redirectEventoForm(Model model, @RequestParam(name = "id", required = false) int id) {
         EventoModel eventoModel = new EventoModel();
-        List<AsistenteModel> asistenteModels = asistenteService.listAllAsistentes();
-        List<LugarModel> lugarModels = lugarService.listAllLugares();
+        /*List<AsistenteModel> asistenteModels = asistenteService.listAllAsistentes();
+        List<LugarModel> lugarModels = lugarService.listAllLugares();*/
         boolean b = true;
         if(id != 0) {
             eventoModel = eventoService.findEventoByIdModel(id);
             b = false;
         }
         model.addAttribute("eventoModel",eventoModel);
-        model.addAttribute("asistenteModels", asistenteModels);
-        model.addAttribute("lugarModels", lugarModels);
+        /*model.addAttribute("asistenteModels", asistenteModels);
+        model.addAttribute("lugarModels", lugarModels);*/
         model.addAttribute("b",b);
         return ViewConstant.EVENTO_FORM;
     }

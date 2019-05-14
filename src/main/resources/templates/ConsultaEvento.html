@@ -64,11 +64,12 @@
                                         </ul>
                                     </li>
 
+
                                     <li class="has-children">
-                                        <a href="RegistroEvento.html">Registro evento</a>
+                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro evento</a>
                                         <ul class="dropdown">
 
-                                            <li><a href="ConsultaEvento.html">consulta</a></li>
+                                            <li><a th:href="@{/eventos/showEventos}">consulta</a></li>
 
                                         </ul>
                                     </li>
@@ -108,8 +109,8 @@
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
                     <th>Cupo</th>
-                    <th>Lugar</th>
-                    <th>Asistentes</th>
+                    <!--<th>Lugar</th>
+                    <th>Asistentes</th>-->
 
                     <th class="text-center">Acción</th>
                 </tr>
@@ -119,10 +120,10 @@
                     <td th:text="${evento.fechaI}"></td>
                     <td th:text="${evento.fechaF}"></td>
                     <td th:text="${evento.cupo}"></td>
-
-                    <select th:each="lugar : ${evento.lugar}">
+                    <!--<td th:text="${evento.lugar}"></td>-->
+                    <!--<select >
                         <option  value="${lugar}" th:value="${lugar.id}" th:text="${lugar.nombre}"></option>
-                    </select>
+                    </select>-->
                     <td th:text="${evento.asistentes}"></td>
 
                     <td class="text-center">

@@ -17,7 +17,7 @@ public class Lugar {
     @Column(name="direccion")
     private String direccion;
 
-    @OneToMany(mappedBy = "lugar", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "lugar", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Evento> eventoLugares;
 
 

@@ -14,7 +14,7 @@ public class EventoModel {
     private String nombre;
     private String fechaF;
     private String fechaI;
-    private Lugar lugar;
+    private String lugar;
     private int cupo;
     private Set<Asistente> asistentes = new HashSet<Asistente>();
 

@@ -31,15 +31,16 @@ public class Evento {
             inverseJoinColumns = @JoinColumn(name = "asistente_id", referencedColumnName = "id"))
     private Set<Asistente> asistentes;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lugar")
     private Lugar lugar;
 
-    public Evento(String nombre, Date fechaI, Date fechaF, int cupo) {
+    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, Lugar lugar) {
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;
         this.cupo = cupo;
+        this.lugar = lugar;
 
     }
 
