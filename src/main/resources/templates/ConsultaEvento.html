@@ -119,12 +119,9 @@
                     <td th:text="${evento.fechaI}"></td>
                     <td th:text="${evento.fechaF}"></td>
                     <td th:text="${evento.cupo}"></td>
-                    <td th:switch="${evento.lugares.size()}">
-                        <label th:case="'0'">
-                            No lugar asignado.
-                        </label>
-                    <select th:case="*" th:each="lugares : ${evento.lugares}">
-                        <option  value="${lugares}" th:value="${lugares.id}" th:text="${lugares.nombre}"></option>
+
+                    <select th:each="lugar : ${evento.lugar}">
+                        <option  value="${lugar}" th:value="${lugar.id}" th:text="${lugar.nombre}"></option>
                     </select>
                     <td th:text="${evento.asistentes}"></td>
 

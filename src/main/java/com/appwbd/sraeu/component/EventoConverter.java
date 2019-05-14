@@ -22,7 +22,7 @@ public class EventoConverter {
         evento.setNombre(eventoModel.getNombre());
         evento.setFechaI(fech);
         evento.setFechaF(fech1);
-        evento.setLugares(eventoModel.getLugares());
+        evento.setLugar(eventoModel.getLugar());
         evento.setAsistentes(eventoModel.getAsistentes());
         return evento;
     }
@@ -33,7 +33,7 @@ public class EventoConverter {
     eventoModel.setCupo(evento.getCupo());
     eventoModel.setFechaF(evento.getFechaF().toString());
     eventoModel.setFechaI(evento.getFechaI().toString());
-    eventoModel.setLugares(evento.getLugares());
+    eventoModel.setLugar(evento.getLugar());
     eventoModel.setAsistentes(evento.getAsistentes());
     return eventoModel;
     }

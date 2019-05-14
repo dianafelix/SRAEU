@@ -17,11 +17,8 @@ public class Lugar {
     @Column(name="direccion")
     private String direccion;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "lugar_evento",
-            joinColumns = @JoinColumn(name = "lugar_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "evento_id", referencedColumnName = "id"))
-    private Set<Evento> eventos;
+    @OneToMany(mappedBy = "lugar", cascade = CascadeType.ALL)
+    private Set<Evento> eventoLugares;
 
 
     public Lugar(int id, String nombre ) {

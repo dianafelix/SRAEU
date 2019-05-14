@@ -136,8 +136,8 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Lugar:</label>
-                            <select>
-                                <option th:each="lugares : ${lugarModels}" th:value="${lugares.id}" th:text="${lugares.nombre}">
+                            <select th:each="lugar : ${lugarModels}"  th:field="*{lugar}">
+                                <option th:value="${lugar.id}" th:text="${lugar.nombre}">
                             </select>
                         </div>
                     </div>
