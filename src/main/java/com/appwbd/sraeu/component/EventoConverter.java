@@ -10,7 +10,7 @@ import java.util.Date;
 @Component("eventoConverter")
 public class EventoConverter {
 
-    Evento convertEventoToModel2Evento(EventoModel eventoModel)throws Exception {
+    public Evento convertEventoToModel2Evento(EventoModel eventoModel)throws Exception {
         String fecha = eventoModel.getFechaF();
         Date fech = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
         String fecha1 = eventoModel.getFechaI();
