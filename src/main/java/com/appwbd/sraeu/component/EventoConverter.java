@@ -45,6 +45,7 @@ public class EventoConverter {
     EventoModel eventoModel = new EventoModel();
     eventoModel.setId(evento.getId());
     eventoModel.setCupo(evento.getCupo());
+    eventoModel.setNombre(evento.getNombre());
     eventoModel.setFechaF(evento.getFechaF().toString());
     eventoModel.setFechaI(evento.getFechaI().toString());
 /*    eventoModel.setLugar(evento.getLugar().getId());
