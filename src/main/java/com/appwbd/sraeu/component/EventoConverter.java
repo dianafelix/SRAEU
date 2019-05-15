@@ -30,6 +30,7 @@ public class EventoConverter {
         evento.setNombre(eventoModel.getNombre());
         evento.setFechaI(fech);
         evento.setFechaF(fech1);
+        evento.setHora(eventoModel.getHora());
         /*Lugar testLugar = new Lugar();
         testLugar.setId(1);
         testLugar.setNombre("AULA MAGNA");
@@ -46,8 +47,9 @@ public class EventoConverter {
     eventoModel.setId(evento.getId());
     eventoModel.setCupo(evento.getCupo());
     eventoModel.setNombre(evento.getNombre());
-    eventoModel.setFechaF(evento.getFechaF().toString());
-    eventoModel.setFechaI(evento.getFechaI().toString());
+    eventoModel.setFechaF(new SimpleDateFormat("yyyy-MM-dd").format(evento.getFechaF()));
+    eventoModel.setFechaI(new SimpleDateFormat("yyyy-MM-dd").format(evento.getFechaI()));
+    eventoModel.setHora(evento.getHora());
 /*    eventoModel.setLugar(evento.getLugar().getId());
     eventoModel.setLugar(evento.getLugar().getNombre());
     eventoModel.setAsistentes(evento.getAsistentes());*/

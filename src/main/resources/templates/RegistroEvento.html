@@ -22,12 +22,12 @@
 
     <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
 
-    <!--<link rel="stylesheet" href="#" th:href="@{/css/style.css}">-->
+   <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
 
 </head>
 <body>
 
-<div class="site-loader"></div>
+     <!--<div class="site-loader"></div> -->
 
 <div class="site-wrap">
 
@@ -66,17 +66,17 @@
                                     </li>
 
                                     <li class="has-children">
-                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro evento</a>
+                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro Evento</a>
                                         <ul class="dropdown">
 
-                                            <li><a th:href="@{/eventos/showEventos}">consulta</a></li>
+                                            <li><a th:href="@{/eventos/showEventos}">Consulta</a></li>
 
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                             <li><a href="Log.html">Inicio Sesion</a></li>
-                            <li> <a href="#">salir</a></li>
+                            <li> <a href="#">Salir</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -110,7 +110,7 @@
                     <input type="hidden" th:field="*{id}"></input>
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Nombre:</label>
+                            <label class="font-weight-bold" for="email">Nombre del Evento:</label>
                             <input type="text" id="email" class="form-control" placeholder="Nombre" th:field="*{nombre}" th:value="${nombre}" required>
                         </div>
                     </div>
@@ -131,6 +131,12 @@
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Cupo:</label>
                             <input type="number" id="subject" class="form-control" placeholder="Cupo" th:field="*{cupo}" th:value="${cupo}"  min="0" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="font-weight-bold" for="email">Hora:</label>
+                            <input type="number" id="subject" class="form-control" placeholder="Hora" th:field="*{hora}" th:value="${hora}"  value="00:00" required>
                         </div>
                     </div>
                     <!--<div class="row form-group">
@@ -175,20 +181,20 @@
 
 </div>
 
-<script th:src="@{js/jquery-3.3.1.min.js}"></script>
-<script th:src="@{js/jquery-migrate-3.0.1.min.js}"></script>
-<script th:src="@{js/jquery-ui.js}"></script>
-<script th:src="@{js/popper.min.js}"></script>
-<script th:src="@{js/bootstrap.min.js}"></script>
-<script th:src="@{js/owl.carousel.min.js}"></script>
-<script th:src="@{js/mediaelement-and-player.min.js}"></script>
-<script th:src="@{js/jquery.stellar.min.js}"></script>
-<script th:src="@{js/jquery.countdown.min.js}"></script>
-<script th:src="@{js/jquery.magnific-popup.min.js}"></script>
-<script th:src="@{js/bootstrap-datepicker.min.js}"></script>
-<script th:src="@{js/aos.js}"></script>
+<script type="text/javascript" src="../static/js/jquery-3.3.1.min.js" th:src="@{'/js/jquery-3.3.1.min.js'}"></script>
+<script th:src="@{'/js/jquery-migrate-3.0.1.min.js'}"></script>
+<script th:src="@{'/js/jquery-ui.js'}"></script>
+<script th:src="@{'/js/popper.min.js'}"></script>
+<script th:src="@{'/js/bootstrap.min.js'}"></script>
+<script th:src="@{'/js/owl.carousel.min.js'}"></script>
+<script th:src="@{'/js/mediaelement-and-player.min.js'}"></script>
+<script th:src="@{'/js/jquery.stellar.min.js'}"></script>
+<script th:src="@{'/js/jquery.countdown.min.js'}"></script>
+<script th:src="@{'/js/jquery.magnific-popup.min.js'}"></script>
+<script th:src="@{'/js/bootstrap-datepicker.min.js'}"></script>
+<script th:src="@{'/js/aos.js'}"></script>
 
-<script th:src="@{js/main.js}"></script>
+<script th:src="@{'/js/main.js'}"></script>
 
 </body>
 </html>

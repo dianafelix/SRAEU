@@ -22,11 +22,11 @@
 
     <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
 
-    <!--<link rel="stylesheet" href="#" th:href="@{/css/style.css}">-->
+    <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
 </head>
 <body>
 
-<div class="site-loader"></div>
+<!--<div class="site-loader"></div> -->
 
 <div class="site-wrap">
 
@@ -66,17 +66,17 @@
 
 
                                     <li class="has-children">
-                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro evento</a>
+                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro Evento</a>
                                         <ul class="dropdown">
 
-                                            <li><a th:href="@{/eventos/showEventos}">consulta</a></li>
+                                            <li><a th:href="@{/eventos/showEventos}">Consulta</a></li>
 
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
                             <li><a href="Log.html">Inicio Sesion</a></li>
-                            <li> <a href="l">salir</a></li>
+                            <li> <a href="l">Salir</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -105,10 +105,11 @@
                 <thead>
                 <a th:href="@{/eventos/eventoForm?id=0}" class="btn btn-primary btn-xs pull-right"><b>+</b> Agregar Evento</a>
                 <tr>
-                    <th>Nombre</th>
+                    <th>Nombre del Evento</th>
                     <th>Fecha de Inicio</th>
                     <th>Fecha de Fin</th>
                     <th>Cupo</th>
+                    <th>Hora</th>
                     <!--<th>Lugar</th>
                     <th>Asistentes</th>-->
 
@@ -120,6 +121,8 @@
                     <td th:text="${evento.fechaI}"></td>
                     <td th:text="${evento.fechaF}"></td>
                     <td th:text="${evento.cupo}"></td>
+                    <td th:text="${evento.hora}"></td>
+
                     <!--<td th:text="${evento.lugar}"></td>-->
                     <!--<select >
                         <option  value="${lugar}" th:value="${lugar.id}" th:text="${lugar.nombre}"></option>

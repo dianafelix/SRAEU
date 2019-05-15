@@ -24,6 +24,8 @@ public class Evento {
     private Date fechaF;
     @Column(name = "cupo")
     private int cupo;
+    @Column(name = "hora")
+    private String hora;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "evento_asistente",
@@ -35,12 +37,13 @@ public class Evento {
     @JoinColumn(name = "lugar")
     private Lugar lugar;
 
-    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, Lugar lugar) {
+    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, Lugar lugar, String hora) {
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;
         this.cupo = cupo;
         this.lugar = lugar;
+        this.hora = hora;
 
     }
 
