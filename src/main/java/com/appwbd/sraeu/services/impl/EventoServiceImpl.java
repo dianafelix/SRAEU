@@ -26,7 +26,7 @@ public class EventoServiceImpl implements EventoService {
     @Override
     public EventoModel addEvento(EventoModel eventoModel) throws Exception {
         //Aquí nos pide una entidad, por lo tanto tenemos que transformar el eventoModel a entidad
-        Evento temp=eventoConverter.convertEventoToModel2Evento(eventoModel);
+        Evento temp=eventoConverter.convertEventoModel2Evento(eventoModel);
         Evento evento = eventoRepository.save(temp);
         return eventoConverter.convertEvento2EventoModel(evento);
     }

@@ -4,6 +4,7 @@ import com.appwbd.sraeu.entity.Asistente;
 import com.appwbd.sraeu.entity.Lugar;
 import lombok.Data;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,6 @@ public class EventoModel {
     private String lugar;
     private int cupo;
     private Set<Asistente> asistentes = new HashSet<Asistente>();
-    private String hora;
 
 
     public EventoModel(){

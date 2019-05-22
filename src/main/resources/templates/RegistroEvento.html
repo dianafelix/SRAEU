@@ -19,6 +19,16 @@
     <link rel="stylesheet" href="#" th:href="@{/fonts/flaticon/font/flaticon.css}">
     <link rel="stylesheet" href="#" th:href="@{/css/fl-bigmug-line.css}">
 
+    <!--PRUEBA DATETIME
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    BORRAR SI NO SIRVE-->
+
 
     <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
 
@@ -117,14 +127,16 @@
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Fecha de Inicio:</label>
-                            <input type="date" id="email" class="form-control"  th:field="*{fechaI}" th:value="${fechaI}" required>
+                            <label class="font-weight-bold" for="email">Fecha de Inicio / Hora de Inicio:</label>
+                           <!-- <input type="date" id="email" class="form-control"  th:field="*{fechaI}" th:value="${fechaI}" required>-->
+                            <input type="datetime-local" id="meeting-time" class="form-control" th:field="*{fechaI}" th:value="${fechaI}"  name="meeting-time" required >
+
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Fecha de Fin:</label>
-                            <input type="date" id="email" class="form-control"  th:field="*{fechaF}" th:value="${fechaF}" required>
+                            <label class="font-weight-bold" for="email">Fecha de Fin / Hora de Fin:</label>
+                            <input type="datetime-local" id="meeting-time" class="form-control"  th:field="*{fechaF}" th:value="${fechaF}" name="meeting-time" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -133,12 +145,34 @@
                             <input type="number" id="subject" class="form-control" placeholder="Cupo" th:field="*{cupo}" th:value="${cupo}"  min="0" required>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <!--<div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Hora:</label>
-                            <input type="number" id="subject" class="form-control" placeholder="Hora" th:field="*{hora}" th:value="${hora}"  value="00:00" required>
+                            <input type="time" id="subject" class="form-control" placeholder="00:00" th:field="*{hora}" th:value="${hora}"  required>
                         </div>
-                    </div>
+                    </div>-->
+
+<!--Borrar si no sirve
+                    <div class="container">
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datetimepicker();
+                                });
+                            </script>
+                        </div>
+                    </div>HASTA AQUI-->
+
                     <!--<div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Lugar:</label>
@@ -195,6 +229,8 @@
 <script th:src="@{'/js/aos.js'}"></script>
 
 <script th:src="@{'/js/main.js'}"></script>
+
+
 
 </body>
 </html>
