@@ -11,9 +11,12 @@ import java.util.Set;
 public class Asistente {
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
-    @Column(name="nombre", unique = true, nullable = false)
+    @Column(name="matricula",unique = true,nullable = true)
+    private int mat;
+    @Column(name="nombre")
     private String nombre;
     @Column(name="apellido")
     private String apellido;

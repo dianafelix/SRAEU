@@ -6,6 +6,7 @@ import lombok.Data;
 public class AsistenteModel {
 
     private int Id;
+    private int mat;
     private String nombre;
     private String Apellido;
     private String correo;
@@ -17,8 +18,9 @@ public class AsistenteModel {
 
     }
 
-    public AsistenteModel(int id, String nombre, String apellido, String correo, String telefono, String lugar, String tipo) {
+    public AsistenteModel(int id, int mat, String nombre, String apellido, String correo, String telefono, String lugar, String tipo) {
         Id = id;
+        this.mat = mat;
         this.nombre = nombre;
         Apellido = apellido;
         this.correo = correo;
