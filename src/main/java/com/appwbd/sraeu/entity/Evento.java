@@ -2,6 +2,7 @@ package com.appwbd.sraeu.entity;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -24,8 +25,6 @@ public class Evento {
     private Date fechaF;
     @Column(name = "cupo")
     private int cupo;
-    @Column(name = "hora")
-    private String hora;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "evento_asistente",
@@ -37,13 +36,12 @@ public class Evento {
     @JoinColumn(name = "lugar")
     private Lugar lugar;
 
-    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, Lugar lugar, String hora) {
+    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, Lugar lugar) {
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;
         this.cupo = cupo;
         this.lugar = lugar;
-        this.hora = hora;
 
     }
 
