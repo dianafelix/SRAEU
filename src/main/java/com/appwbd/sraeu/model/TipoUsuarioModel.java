@@ -10,13 +10,15 @@ public class TipoUsuarioModel {
 
     private int id;
     private String tipo;
-    private List<Usuario> usuarios;
+    private String[] privilegios;
+    private List<String> usuarios;
 
     public TipoUsuarioModel(){}
 
-    public TipoUsuarioModel(int id, String tipo, List<Usuario> usuarios) {
+    public TipoUsuarioModel(int id, String tipo, String[] privilegios, List<String> usuarios) {
         this.id = id;
         this.tipo = tipo;
+        this.privilegios = privilegios;
         this.usuarios = usuarios;
     }
 }

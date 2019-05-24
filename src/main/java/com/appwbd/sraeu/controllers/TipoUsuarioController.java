@@ -23,9 +23,7 @@ public class TipoUsuarioController {
     private static final Log log = LogFactory.getLog(TipoUsuarioController.class);
 
     @GetMapping("/cancel")
-    public String cancel(){
-        return "redirect:/tipoUsuarios/showTipoUsuarios";
-    }
+    public String cancel(){return "redirect:/tipoUsuarios/showTipoUsuarios";}
 
     @GetMapping("/tipoUsuarioForm")
     public String redirectTipoUsuarioForm(Model model, @RequestParam(name = "id",required = false) int id){
@@ -49,7 +47,7 @@ public class TipoUsuarioController {
     @GetMapping("/showTipoUsuarios")
     public ModelAndView showTipoUsuarios(){
         ModelAndView mav = new ModelAndView((ViewConstant.TIPOSUSUARIO));
-        mav.addObject("tipoUsuarios",tipoUsuarioService.listAllTipos());
+        mav.addObject("tipos",tipoUsuarioService.listAllTipos());
         return mav;
     }
 

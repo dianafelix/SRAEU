@@ -15,8 +15,11 @@ public class TipoUsuario {
     @Column(name = "id", unique = true, nullable = false)
     private int id;
 
-    @Column(name = "tipo", nullable = false)
+    @Column(name = "tipo")
     private String tipo;
+
+    @Column(name = "privilegios")
+    private String privilegios;
 
     @OneToMany(mappedBy = "tipoUsuario")
     private List<Usuario> usuarios;

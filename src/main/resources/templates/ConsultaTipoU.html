@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Aplicaciones &mdash; SRAEU</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link rel="stylesheet" href="#" th:href="@{/fonts/icomoon/style.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/jquery-ui.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/bootstrap-datepicker.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/mediaelementplayer.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="#" th:href="@{/static/fonts/flaticon/font/flaticon.css}">
+    <link rel="stylesheet" href="#" th:href="@{/static/css/fl-bigmug-line.css}">
+
+    <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/style.css}">
+
+</head>
+<body>
+
+<!--<div class="site-loader"></div>-->
+
+<div class="site-wrap">
+
+
+
+    <div class="site-navbar">
+        <div class="container py-1">
+            <div class="row align-items-center">
+                <div class="col-8 col-md-8 col-lg-4">
+                    <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong><span class="text-danger"></span></strong></a></h1>
+                </div>
+                <div class="col-4 col-md-4 col-lg-8">
+                    <nav class="site-navigation text-right text-md-right" role="navigation">
+
+                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+                        <ul class="site-menu js-clone-nav d-none d-lg-block">
+                            <li>
+                                <a href="#">Inicio</a>
+                            </li>
+                            <li class="has-children">
+                                <a href="#">Registros</a>
+                                <ul class="dropdown">
+                                    <li class="has-children">
+                                        <a th:href="@{/usuarios/usuarioForm?username=none}">Registro de Usuario</a>
+                                        <ul class="dropdown">
+                                            <li><a th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="has-children">
+                                        <a th:href="@{/asistentes/asistenteForm?id=0}">Registro Asistentes</a>
+                                        <ul class="dropdown">
+                                            <li><a th:href="@{/asistentes/showAsistentes}">Consulta</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                    <li class="has-children">
+                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro Evento</a>
+                                        <ul class="dropdown">
+
+                                            <li><a th:href="@{/eventos/showEventos}">Consulta</a></li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Inicio Sesión</a></li>
+                            <li> <a href="#">Salir</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-blocks-cover inner-page-cover " th:style="'background-image: url('+@{/images/fondo.jpg}+');'" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-10">
+                <h1 class="mb-2">Consulta de Usuario </h1>
+                <div><a href="#">Inicio</a> <span class="mx-2 text-white">&bullet;</span> <strong class="text-white">Registro</strong></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row col-md-10 col-md-offset-2 custyle">
+            <table class="table table-striped custab">
+                <thead>
+                <a href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm?id=0}" class="btn btn-primary btn-xs pull-right"><b>+</b> Agregar Registro</a>
+                <tr>
+                    <th>Nombre de usuario</th>
+                    <th>Tipo de Usuario</th>
+                    <th class="text-center">Acción</th>
+                </tr>
+                </thead>
+                <tr th:each="tipo : ${tipos}">
+                    <td th:text="${tipo.usuarios}"></td>
+                    <td th:text="${tipo.tipo}"></td>
+                    <td class="text-center">
+                        <a class='btn btn-info btn-xs' href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm?id=__${tipo.id}__}"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                        <a class="btn btn-danger btn-xs" href="#" th:href="@{/tipoUsuarios/removeTipoUsuario?id=__${tipo.id}__}"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="site-section site-section-sm bg-primary">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h2 class="text-white">UABC Mexicali</h2>
+                <p class="lead text-white-5">Sistema de Registro de Asistencia a Eventos Universitarios</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <a th:href="@{/asistentes/asistenteForm?id=0}" class="btn btn-outline-primary btn-block py-3 btn-lg">Registrate!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div>
+
+<script type="text/javascript" src="../static/js/jquery-3.3.1.min.js" th:src="@{'/js/jquery-3.3.1.min.js'}"></script>
+<script th:src="@{'/js/jquery-migrate-3.0.1.min.js'}"></script>
+<script th:src="@{'/js/jquery-ui.js'}"></script>
+<script th:src="@{'/js/popper.min.js'}"></script>
+<script th:src="@{'/js/bootstrap.min.js'}"></script>
+<script th:src="@{'/js/owl.carousel.min.js'}"></script>
+<script th:src="@{'/js/mediaelement-and-player.min.js'}"></script>
+<script th:src="@{'/js/jquery.stellar.min.js'}"></script>
+<script th:src="@{'/js/jquery.countdown.min.js'}"></script>
+<script th:src="@{'/js/jquery.magnific-popup.min.js'}"></script>
+<script th:src="@{'/js/bootstrap-datepicker.min.js'}"></script>
+<script th:src="@{'/js/aos.js'}"></script>
+
+<script th:src="@{'/js/main.js'}"></script>
+
+</body>
+</html>

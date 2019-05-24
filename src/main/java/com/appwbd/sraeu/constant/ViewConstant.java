@@ -7,8 +7,8 @@ public class ViewConstant {
     public static final String ASISTENTE_FORM = "RegistroAsistencia";
     public static final String ASISTENTES = "ConsultaAsistencia";
 
-    public static final String TIPOUSUARIO_FORM = "tipousuarioform";
-    public static final String TIPOSUSUARIO = "tipousuario";
+    public static final String TIPOUSUARIO_FORM = "RegistroTipoU";
+    public static final String TIPOSUSUARIO = "ConsultaTipoU";
 
     public static final String EVENTO_FORM = "RegistroEvento";
     public static final String EVENTOS = "ConsultaEvento" ;
