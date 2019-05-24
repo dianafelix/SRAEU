@@ -73,6 +73,14 @@
 
                                         </ul>
                                     </li>
+                                    <li class="has-children">
+                                        <a th:href="@{/lugares/lugarForm?id=0}">Registro Lugar</a>
+                                        <ul class="dropdown">
+
+                                            <li><a th:href="@{/lugares/showLugares}">Consulta</a></li>
+
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li><a href="#">Inicio Sesión</a></li>
@@ -106,8 +114,8 @@
                 <a th:href="@{/eventos/eventoForm?id=0}" class="btn btn-primary btn-xs pull-right"><b>+</b> Agregar Evento</a>
                 <tr>
                     <th>Nombre del Evento</th>
-                    <th>Fecha de Inicio</th>
-                    <th>Fecha de Fin</th>
+                    <th>Fecha de Inicio / Hora de Inicio</th>
+                    <th>Fecha de Fin / Hora de Fin</th>
                     <th>Cupo</th>
                     <!--<th>Lugar</th>
                     <th>Asistentes</th>-->

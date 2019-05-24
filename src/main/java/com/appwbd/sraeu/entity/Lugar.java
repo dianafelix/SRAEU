@@ -10,6 +10,7 @@ import java.util.Set;
 public class Lugar {
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
     @Column(name="nombre")
@@ -21,9 +22,10 @@ public class Lugar {
     private Set<Evento> eventoLugares;
 
 
-    public Lugar(int id, String nombre ) {
+    public Lugar(int id, String nombre, String direccion ) {
         this.id = id;
         this.nombre = nombre;
+        this.direccion = direccion;
     }
 
     public Lugar(){

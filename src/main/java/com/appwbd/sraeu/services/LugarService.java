@@ -6,7 +6,7 @@ import com.appwbd.sraeu.model.LugarModel;
 import java.util.List;
 
 public interface LugarService{
-    public abstract LugarModel addLugar(LugarModel lugarModel) throws Exception;
+    public abstract LugarModel addLugar(LugarModel lugarModel);
 
     public abstract List<LugarModel> listAllLugares();
 
