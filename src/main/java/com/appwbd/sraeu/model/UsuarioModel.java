@@ -8,16 +8,18 @@ public class UsuarioModel {
 
     private String username;
     private String password;
-    private TipoUsuario tipoUsuario;
+    private int tipoUsuarioId;
+    private String tipoUsuarioTipo;
     private boolean enable;
 
     public UsuarioModel(){
     }
 
-    public UsuarioModel(String username, String password, TipoUsuario tipoUsuario, boolean enable) {
+    public UsuarioModel(String username, String password, int tipoUsuarioId, String tipoUsuarioTipo, boolean enable) {
         this.username = username;
         this.password = password;
-        this.tipoUsuario = tipoUsuario;
+        this.tipoUsuarioId = tipoUsuarioId;
+        this.tipoUsuarioTipo = tipoUsuarioTipo;
         this.enable = enable;
     }
 }

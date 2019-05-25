@@ -15,7 +15,7 @@ public class Asistente {
     @Column(name = "id")
     private int id;
     @Column(name="matricula",unique = true,nullable = true)
-    private int mat;
+    private Integer mat;
     @Column(name="nombre")
     private String nombre;
     @Column(name="apellido")

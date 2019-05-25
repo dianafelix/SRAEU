@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Aplicaciones &mdash; SRAEU</title>
+    <title>Consulta Usuarios</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,6 +54,7 @@
                         <a th:href="@{/usuarios/usuarioForm?username=none}">Registro de Usuario</a>
                         <ul class="dropdown">
                           <li><a th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
+                          <li><a th:href="@{/tipoUsuarios/showTipoUsuarios}">Tipos Usuario</a></li>
                         </ul>
                       </li>
 
@@ -100,7 +101,7 @@
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
             <h1 class="mb-2">Consulta de Usuario </h1>
-            <div><a href="#">Inicio</a> <span class="mx-2 text-white">&bullet;</span> <strong class="text-white">Registro</strong></div>
+            <div><a href="#">Inicio</a> <span class="mx-2 text-white">&bullet;</span> <strong class="text-white">Consulta</strong></div>
           </div>
         </div>
       </div>
@@ -123,7 +124,7 @@
                 <tr th:each="user : ${usuarios}">
                     <td th:text="${user.username}"></td>
                     <td>********</td>
-                    <td th:text="${user.tipoUsuario}"></td>
+                    <td th:text="${user.tipoUsuarioTipo}"></td>
                     <td th:text="${user.enable}"></td>
                     <td class="text-center">
                         <a class='btn btn-info btn-xs' href="#" th:href="@{/usuarios/usuarioForm?username=__${user.username}__}"><span class="glyphicon glyphicon-edit"></span> Editar</a>

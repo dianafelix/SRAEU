@@ -3,6 +3,7 @@ package com.appwbd.sraeu.model;
 import com.appwbd.sraeu.entity.Usuario;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -11,7 +12,7 @@ public class TipoUsuarioModel {
     private int id;
     private String tipo;
     private String[] privilegios;
-    private List<String> usuarios;
+    private List<String> usuarios = new ArrayList<>();
 
     public TipoUsuarioModel(){}
 

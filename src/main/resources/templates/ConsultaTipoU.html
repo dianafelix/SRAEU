@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Aplicaciones &mdash; SRAEU</title>
+    <title>Consulta Tipos Usuario</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -54,6 +54,7 @@
                                         <a th:href="@{/usuarios/usuarioForm?username=none}">Registro de Usuario</a>
                                         <ul class="dropdown">
                                             <li><a th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
+                                            <li><a th:href="@{/tipoUsuarios/showTipoUsuarios}">Tipos Usuario</a></li>
                                         </ul>
                                     </li>
 
@@ -66,10 +67,18 @@
 
 
                                     <li class="has-children">
-                                        <a th:href="@{/eventos/eventoForm?id=0}">Registro Evento</a>
+                                        <a th:href="@{/eventos/eventoForm}">Registro Evento</a>
                                         <ul class="dropdown">
 
                                             <li><a th:href="@{/eventos/showEventos}">Consulta</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="has-children">
+                                        <a th:href="@{/lugares/lugarForm?id=0}">Registro Lugar</a>
+                                        <ul class="dropdown">
+
+                                            <li><a th:href="@{/lugares/showLugares}">Consulta</a></li>
 
                                         </ul>
                                     </li>
@@ -91,8 +100,8 @@
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-10">
-                <h1 class="mb-2">Consulta de Usuario </h1>
-                <div><a href="#">Inicio</a> <span class="mx-2 text-white">&bullet;</span> <strong class="text-white">Registro</strong></div>
+                <h1 class="mb-2">Consulta de Tipos de Usuario </h1>
+                <div><a href="#">Inicio</a> <span class="mx-2 text-white">&bullet;</span> <strong class="text-white">Consulta</strong></div>
             </div>
         </div>
     </div>
@@ -105,14 +114,26 @@
                 <thead>
                 <a href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm?id=0}" class="btn btn-primary btn-xs pull-right"><b>+</b> Agregar Registro</a>
                 <tr>
-                    <th>Nombre de usuario</th>
+                    <th>Id</th>
                     <th>Tipo de Usuario</th>
+                    <th>Privilegios</th>
+                    <th>Usuarios</th>
                     <th class="text-center">Acción</th>
                 </tr>
                 </thead>
                 <tr th:each="tipo : ${tipos}">
-                    <td th:text="${tipo.usuarios}"></td>
+                    <td th:text="${tipo.id}"></td>
                     <td th:text="${tipo.tipo}"></td>
+                    <td><select>
+                        <option th:each=" privilegio: ${tipo.privilegios}"
+                                th:text="${privilegio}">
+                        </option>
+                    </select></td>
+                    <td><select>
+                        <option th:each=" usuario: ${tipo.usuarios}"
+                                th:text="${usuario}">
+                        </option>
+                    </select></td>
                     <td class="text-center">
                         <a class='btn btn-info btn-xs' href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm?id=__${tipo.id}__}"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                         <a class="btn btn-danger btn-xs" href="#" th:href="@{/tipoUsuarios/removeTipoUsuario?id=__${tipo.id}__}"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>

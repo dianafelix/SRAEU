@@ -58,4 +58,14 @@ public class AsistenteServiceImpl implements AsistenteService {
         if(asistente != null)
             asistenteRepository.delete(findAsistenteById(id));
     }
+
+    @Override
+    public boolean findAsistenteByMat(int mat) {
+        boolean b = false;
+        if(asistenteRepository.findByMat(mat) != null){
+            b = true;
+        }
+
+        return b;
+    }
 }
