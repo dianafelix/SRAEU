@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component("tipoUsuarioConverter")
 public class TipoUsuarioConverter {
 
@@ -21,16 +24,15 @@ public class TipoUsuarioConverter {
         tipoUsuario.setId(tipoUsuarioModel.getId());
         tipoUsuario.setTipo(tipoUsuarioModel.getTipo());
         String priv = "";
-        for (String privilegios: tipoUsuarioModel.getPrivilegios())
-        {
-            priv += privilegios+";";
+        for (String privilegios : tipoUsuarioModel.getPrivilegios()) {
+            priv += privilegios + ";";
         }
-        for (String usuario: tipoUsuarioModel.getUsuarios())
-        {
-            tipoUsuario.getUsuarios().add(usuarioRepository.findByUsername(usuario));
+        List<Usuario> temp = new ArrayList<>();
+        for (String usuario : tipoUsuarioModel.getUsuarios()) {
+            temp.add(usuarioRepository.findByUsername(usuario));
         }
+        tipoUsuario.setUsuarios(temp);
         tipoUsuario.setPrivilegios(priv);
-
         return tipoUsuario;
     }
 
@@ -39,11 +41,9 @@ public class TipoUsuarioConverter {
         tipoUsuarioModel.setId(tipoUsuario.getId());
         tipoUsuarioModel.setTipo(tipoUsuario.getTipo());
         tipoUsuarioModel.setPrivilegios(tipoUsuario.getPrivilegios().split(";"));
-        for (Usuario usuario: tipoUsuario.getUsuarios())
-        {
+        for (Usuario usuario : tipoUsuario.getUsuarios()) {
             tipoUsuarioModel.getUsuarios().add(usuario.getUsername());
         }
-
         return tipoUsuarioModel;
     }
 

@@ -9,4 +9,5 @@ import java.io.Serializable;
 @Repository("asistenteRepository")
 public interface AsistenteRepository extends JpaRepository<Asistente, Serializable> {
     public abstract Asistente findById(int id);
+    public abstract Asistente findByMat(int mat);
 }

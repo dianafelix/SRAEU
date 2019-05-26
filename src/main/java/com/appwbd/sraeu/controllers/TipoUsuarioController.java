@@ -2,7 +2,9 @@ package com.appwbd.sraeu.controllers;
 
 import com.appwbd.sraeu.constant.ViewConstant;
 import com.appwbd.sraeu.model.TipoUsuarioModel;
+import com.appwbd.sraeu.model.UsuarioModel;
 import com.appwbd.sraeu.services.TipoUsuarioService;
+import com.appwbd.sraeu.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,7 @@ public class TipoUsuarioController {
     @GetMapping("/tipoUsuarioForm")
     public String redirectTipoUsuarioForm(Model model, @RequestParam(name = "id",required = false) int id){
         TipoUsuarioModel tipoUsuarioModel = new TipoUsuarioModel();
+        UsuarioModel usuarioModel = new UsuarioModel();
         if(id != 0)
             tipoUsuarioModel = tipoUsuarioService.findTipoUsuarioByTipoUsuarioModel(id);
         model.addAttribute("tipoUsuarioModel",tipoUsuarioModel);

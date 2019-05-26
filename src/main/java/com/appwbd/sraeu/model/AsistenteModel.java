@@ -6,7 +6,7 @@ import lombok.Data;
 public class AsistenteModel {
 
     private int Id;
-    private int mat;
+    private Integer mat;
     private String nombre;
     private String Apellido;
     private String correo;

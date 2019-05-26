@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Aplicaciones &mdash; SRAEU</title>
+    <title>Registro Usuarios</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -53,8 +53,9 @@
                     <ul class="dropdown">
                       <li class="has-children">
                           <a th:href="@{/usuarios/usuarioForm?username=none}">Registro de Usuario</a>
-                          <ul class="dropdown">
-                              <li><a th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
+                        <ul class="dropdown">
+                          <li><a th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
+                          <li><a th:href="@{/tipoUsuarios/showTipoUsuarios}">Tipos Usuario</a></li>
                         </ul>
                       </li>
 
@@ -130,7 +131,17 @@
                   <input type="text" id="subject" class="form-control" placeholder="Contraseña" th:field="*{password}">
                 </div>
               </div>
-
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="font-weight-bold" for="email">Tipo de Usuario:</label>
+                  <select th:field="*{tipoUsuarioId}">
+                    <br>
+                    <option th:each="tipo : ${tipos}" th:value="${tipo.id}"
+                      th:text="${tipo.id+'-'+tipo.tipo}">
+                    </option>
+                  </select>
+                </div>
+              </div>
               <div class="row form-group">
                 <div class="col-md-12"  th:if="${!b}" readonly>
                   <label class="font-weight-bold" for="email">Activo:</label>

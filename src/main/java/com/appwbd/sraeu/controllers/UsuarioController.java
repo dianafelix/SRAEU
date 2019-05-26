@@ -1,8 +1,10 @@
 package com.appwbd.sraeu.controllers;
 
 import com.appwbd.sraeu.constant.ViewConstant;
+import com.appwbd.sraeu.model.TipoUsuarioModel;
 import com.appwbd.sraeu.model.UsuarioModel;
 import com.appwbd.sraeu.services.SecurityService;
+import com.appwbd.sraeu.services.TipoUsuarioService;
 import com.appwbd.sraeu.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,6 +27,10 @@ public class UsuarioController {
     @Qualifier("securityServiceImpl")
     private SecurityService securityService;
 
+    @Autowired
+    @Qualifier("tipoUsuarioServiceImpl")
+    private TipoUsuarioService tipoUsuarioService;
+
     private static final Log log = LogFactory.getLog(UsuarioController.class);
 
     @GetMapping("/cancel")
@@ -42,6 +48,7 @@ public class UsuarioController {
         }
 
         model.addAttribute("usuarioModel",usuarioModel);
+        model.addAttribute("tipos",tipoUsuarioService.listAllTipos());
         model.addAttribute("b",b);
         model.addAttribute("currentUser", currentUser);
         return ViewConstant.USUARIO_FORM;

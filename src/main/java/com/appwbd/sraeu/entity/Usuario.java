@@ -17,7 +17,7 @@ public class Usuario {
     private boolean enable;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = true)
     private TipoUsuario tipoUsuario;
 
     public Usuario(String username, String password) {
