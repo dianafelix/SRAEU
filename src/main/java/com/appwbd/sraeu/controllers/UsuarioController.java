@@ -2,6 +2,7 @@ package com.appwbd.sraeu.controllers;
 
 import com.appwbd.sraeu.constant.ViewConstant;
 import com.appwbd.sraeu.model.UsuarioModel;
+import com.appwbd.sraeu.services.SecurityService;
 import com.appwbd.sraeu.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,10 @@ public class UsuarioController {
     @Qualifier("usuarioServiceImpl")
     private UsuarioService usuarioService;
 
+    @Autowired
+    @Qualifier("securityServiceImpl")
+    private SecurityService securityService;
+
     private static final Log log = LogFactory.getLog(UsuarioController.class);
 
     @GetMapping("/cancel")
@@ -29,18 +34,23 @@ public class UsuarioController {
     public String redirectUserForm(Model model, @RequestParam(name = "username", required = false) String username) {
         UsuarioModel usuarioModel = new UsuarioModel();
         boolean b = true;
+        String currentUser = securityService.findLoggedInUsername();
+
         if(!username.equals("none")) {
             usuarioModel = usuarioService.findUserByUsernameModel(username);
             b = false;
         }
+
         model.addAttribute("usuarioModel",usuarioModel);
         model.addAttribute("b",b);
+        model.addAttribute("currentUser", currentUser);
         return ViewConstant.USUARIO_FORM;
     }
 
     @PostMapping("/addusuario")
     public String addUser(@ModelAttribute(name = "userModel") UsuarioModel usuarioModel, Model model) {
         log.info("Method: addUser() -- Params: " + usuarioModel.toString());
+        usuarioModel.setEnable(true);
         if (usuarioService.addUser(usuarioModel) != null)
             model.addAttribute("result", 1);
         else
@@ -51,7 +61,14 @@ public class UsuarioController {
     @GetMapping("/showUsuarios")
     public ModelAndView showUsers() {
         ModelAndView mav = new ModelAndView(ViewConstant.USUARIOS);
+        String currentUser = securityService.findLoggedInUsername();
+        System.out.println(currentUser);
+
+
         mav.addObject("usuarios",usuarioService.listAllUsers());
+        mav.addObject("currentUser", currentUser);
+
+
         return mav;
     }
 

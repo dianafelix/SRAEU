@@ -83,7 +83,8 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a href="#">Inicio Sesión</a></li>
+                  <li th:if="${currentUser==null}"><a th:href="@{/login}">Inicio Sesión</a></li>
+                  <li th:object="${currentUser}" th:if="${currentUser!=null}"><span th:text="${currentUser}"></span></li>
                   <li> <a href="#">Salir</a></li>
                 </ul>
               </nav>

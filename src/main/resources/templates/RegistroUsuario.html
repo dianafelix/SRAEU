@@ -84,7 +84,8 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a href="#">Inicio Sesión</a></li>
+                  <li th:if="${currentUser==null}"><a th:href="@{/login}">Inicio Sesión</a></li>
+                  <li th:object="${currentUser}" th:if="${currentUser!=null}"><span th:text="${currentUser}"></span></li>
                   <li> <a href="#">Salir</a></li>
                 </ul>
               </nav>
@@ -126,7 +127,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="font-weight-bold" for="email">Contraseña</label>
-                  <input type="text" id="subject" class="form-control" placeholder="Contraseña" th:field="*{password}" th:value="${password}">
+                  <input type="text" id="subject" class="form-control" placeholder="Contraseña" th:field="*{password}">
                 </div>
               </div>
 
