@@ -34,7 +34,7 @@
                                 <a href="#">Eventos</a>
                                 <ul class="dropdown">
                                     <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/eventos/showEventos}">Consulta</a></li>
-                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/eventos/eventoForm}">Registro</a></li>
+                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/eventos/eventoForm?id=0}">Registro</a></li>
                                 </ul>
                             </li>
                             <li sec:authorize="isAuthenticated()" class="has-children">
@@ -52,7 +52,7 @@
                                     <li class="has-children"><a href="#">Tipos de Usuario</a>
                                         <ul class="dropdown">
                                             <li><a href="#" th:href="@{/tipoUsuarios/showTipoUsuarios}">Consulta</a></li>
-                                            <li><a href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm}">Registro</a></li>
+                                            <li><a href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm?id=0}">Registro</a></li>
                                         </ul>
                                     </li>
                                 </ul>

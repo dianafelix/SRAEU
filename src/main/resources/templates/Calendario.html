@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
     <link rel="stylesheet" href="#" th:href="@{/fonts/icomoon/style.css}">
 
@@ -18,6 +19,7 @@
     <link rel="stylesheet" href="#" th:href="@{/css/animate.css}">
     <link rel="stylesheet" href="#" th:href="@{/fonts/flaticon/font/flaticon.css}">
     <link rel="stylesheet" href="#" th:href="@{/css/fl-bigmug-line.css}">
+    <link rel="stylesheet" href="#" th:href="@{/css/calendario.css}">
 
 
     <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
@@ -30,123 +32,192 @@
   <!--<div class="site-loader"></div>-->
 <div class="site-wrap">
   <div th:replace="fragments.html :: menu"></div>
-  </div>
-
-    <div class="site-blocks-cover inner-page-cover " th:style="'background-image: url('+@{/images/fondo.jpg}+');'" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-10">
-            <h1 class="mb-2">Calendario de eventos </h1>
-            <div><a href="index.html">Inicio</a> <span class="mx-2 text-white">&bullet;</span> <strong class="text-white">Calendario</strong></div>
+</div>
+<div class="site-blocks-cover inner-page-cover " th:style="'background-image: url('+@{/images/fondo.jpg}+');'" data-aos="fade" data-stellar-background-ratio="0.5">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-md-10">
+        <h1 class="mb-2">Calendario de eventos </h1>
+          <div>
+            <a href="index.html">Inicio</a>
+            <span class="mx-2 text-white">&bullet;</span>
+            <strong class="text-white">Calendario</strong>
           </div>
-        </div>
       </div>
-    </div>
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-md-12 col-lg-8 mb-5">
-
-
-<!--empiza calendario-->
-            <div class="calendar" id="calendar-app">
-    <div class="calendar--day-view" id="day-view">
-      <span class="day-view-exit" id="day-view-exit">&times;</span>
-      <span class="day-view-date" id="day-view-date">MAY 29 2016</span>
-      <div class="day-view-content">
-        <div class="day-highlight">
-          Tienes <span class="day-events" id="day-events">0 eventos</span>. &nbsp; <span tabindex="0" onkeyup="if(event.keyCode != 13) return; this.click();" class="day-events-link" id="add-event" data-date>Agregar un nuevo evento?</span>
-        </div>
-        <div class="day-add-event" id="add-day-event-box" data-active="false">
-          <div class="row">
-            <div class="half">
-              <label class="add-event-label">
-                 Nombre
-                <input type="text" class="add-event-edit add-event-edit--long" placeholder="New event" id="input-add-event-name">
-
-              </label>
-            </div>
-            <div class="qtr">
-              <label class="add-event-label">
-            Inicio
-                <input type="text" class="add-event-edit" placeholder="8:15" id="input-add-event-start-time" data-options="1,2,3,4,5,6,7,8,9,10,11,12" data-format="datetime">
-                <input type="text" class="add-event-edit" placeholder="am" id="input-add-event-start-ampm" data-options="a,p,am,pm">
-              </label>
-            </div>
-            <div class="qtr">
-              <label class="add-event-label">
-            Fin
-                <input type="text" class="add-event-edit" placeholder="9" id="input-add-event-end-time" data-options="1,2,3,4,5,6,7,8,9,10,11,12" data-format="datetime">
-                <input type="text" class="add-event-edit" placeholder="am" id="input-add-event-end-ampm" data-options="a,p,am,pm">
-              </label>
-            </div>
-            <div class="half">
-              <a onkeyup="if(event.keyCode != 13) return; this.click();" tabindex="0" id="add-event-save" class="event-btn--save event-btn">Guardar</a>
-              <a tabindex="0" id="add-event-cancel" class="event-btn--cancel event-btn">Cancelar</a>
-            </div>
-          </div>
-
-        </div>
-        <div id="day-events-list" class="day-events-list">
-
-        </div>
-      </div>
-    </div>
-    <div class="calendar--view" id="calendar-view">
-      <div class="cview__month">
-        <span class="cview__month-last" id="calendar-month-last">Abr</span>
-        <span class="cview__month-current" id="calendar-month">May</span>
-        <span class="cview__month-next" id="calendar-month-next">Jun</span>
-      </div>
-      <div class="cview__header">Dom</div>
-      <div class="cview__header">Lun</div>
-      <div class="cview__header">Mar</div>
-      <div class="cview__header">Mié</div>
-      <div class="cview__header">Jue</div>
-      <div class="cview__header">Vie</div>
-      <div class="cview__header">Sáb</div>
-      <div class="calendar--view" id="dates">
-      </div>
-    </div>
-    <div class="footer">
-      <span><span id="footer-date" class="footer__link">Hoy es 30 de Mayo</span></span>
     </div>
   </div>
+</div>
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8 mb-5">
+        <!--calendario-->
+        <div id="calendario">
+          <div id="anterior" onclick="mesantes()"></div>
+          <div id="posterior" onclick="mesdespues()"></div>
+          <h2 id="titulos"></h2>
+          <table id="diasc">
+            <br>
+            <tr id="fila0">
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr id="fila1">
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+            </tr>
+            <tr id="fila2">
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+            </tr>
+            <tr id="fila3">
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+            </tr>
+            <tr id="fila4">
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+            </tr>
+            <tr id="fila5">
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+            </tr>
+            <tr id="fila6">
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+              <td onclick="document.getElementById('ms').show()" onmouseover="colorc(this)"
+                  onmouseout="coloro(this)"></td>
+            </tr>
+          </table>
+          <div id="fechaactual"><i onclick="actualizar()"></i></div>
+          <div id="buscafecha">
+            <form action="#" name="buscar">
+              <p> FECHA A BUSCAR</p>
+              <br/>
+              <select name="buscames">
+                <option value="0">Enero</option>
+                <option value="1">Febrero</option>
+                <option value="2">Marzo</option>
+                <option value="3">Abril</option>
+                <option value="4">Mayo</option>
+                <option value="5">Junio</option>
+                <option value="6">Julio</option>
+                <option value="7">Agosto</option>
+                <option value="8">Septiembre</option>
+                <option value="9">Octubre</option>
+                <option value="10">Noviembre</option>
+                <option value="11">Diciembre</option>
+              </select>
+              <input type="text" name="buscaanno" maxlength="4" size="4"/>
+              <input type="button" value="BUSCAR" onclick="mifecha()"/>
+              </p>
+            </form>
           </div>
-
-
+        </div>
+        <dialog id="ms">
+          <p> Eventos </p>
+          <br>
+          <!--
+          <p th:each="fila:${lista}"
+             th:text="${fila.getFecha()+' '+fila.getAsunto() + ' ' + fila.getMedico()+'--' + fila.getHora()}">
+            valor </br>  </p>
+            -->
+          </br>
+          <button id="close" onclick="document.getElementById('ms').close()">CERRAR</button>
+        </dialog>
+        <!--fin calendario-->
+        <div class="site-section site-section-sm bg-primary">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h2 class="text-white">UABC Mexicali</h2>
+                <p class="lead text-white-5">Sistema de Registro de Asistencia a Eventos Universitarios</p>
+              </div>
+              <div class="col-md-4 text-center">
+                <a href="#" class="btn btn-outline-primary btn-block py-3 btn-lg">Registrate!</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-<!--termina calendario-->
-
-
-
-
-
-
-
-    <div class="site-section site-section-sm bg-primary">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-8">
-            <h2 class="text-white">UABC Mexicali</h2>
-            <p class="lead text-white-5">Sistema de Registro de Asistencia a Eventos Universitarios</p>
-          </div>
-          <div class="col-md-4 text-center">
-            <a href="#" class="btn btn-outline-primary btn-block py-3 btn-lg">Registrate!</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
   </div>
+</div>
 
   <script type="text/javascript" src="../static/js/jquery-3.3.1.min.js" th:src="@{'/js/jquery-3.3.1.min.js'}"></script>
   <script th:src="@{'/js/jquery-migrate-3.0.1.min.js'}"></script>
@@ -160,8 +231,10 @@
   <script th:src="@{'/js/jquery.magnific-popup.min.js'}"></script>
   <script th:src="@{'/js/bootstrap-datepicker.min.js'}"></script>
   <script th:src="@{'/js/aos.js'}"></script>
+  <script th:src="@{'/js/calendario.js'}"></script>
 
   <script th:src="@{'/js/main.js'}"></script>
+
 
   </body>
 </html>
