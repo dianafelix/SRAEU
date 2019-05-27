@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <!--ESTA CLASE ES SOLO PARA ALMACENAR FRAGMENTS DE THYMELEAF-->
+    <meta charset="UTF-8">
+    <title>FRAGMENTS - NO ENTRAR</title>
+</head>
+<body>
+
+    <div class="site-navbar" th:fragment="menu">
+        <div class="container py-1">
+            <div class="row align-items-center">
+                <div class="col-8 col-md-8 col-lg-4">
+                    <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong><span class="text-danger"></span></strong></a></h1>
+                </div>
+                <div class="col-4 col-md-4 col-lg-8">
+                    <nav class="site-navigation text-right text-md-right" role="navigation">
+
+                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+                        <ul class="site-menu js-clone-nav d-none d-lg-block">
+                            <li>
+                                <a href="#" th:href="@{/inicio}">Inicio</a>
+                            </li>
+                            <li class="has-children" sec:authorize="isAuthenticated()">
+                                <a href="#">Asistentes</a>
+                                <ul class="dropdown">
+                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/asistentes/showAsistentes}">Consulta</a></li>
+                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/asistentes/asistenteForm?id=0}">Registro</a></li>
+                                </ul>
+                            </li>
+                            <li sec:authorize="isAuthenticated()" class="has-children">
+                                <a href="#">Eventos</a>
+                                <ul class="dropdown">
+                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/eventos/showEventos}">Consulta</a></li>
+                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/eventos/eventoForm}"Registro></a></li>
+                                </ul>
+                            </li>
+                            <li sec:authorize="isAuthenticated()" class="has-children">
+                                <a href="#">Lugares</a>
+                                <ul class="dropdown">
+                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/lugares/showLugares}"></a></li>
+                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/lugares/lugarForm?id=0}">Registro</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children" sec:authorize="hasAuthority('MANTENIMIENTOU')">
+                                <a href="#">Usuarios</a>
+                                <ul class="dropdown">
+                                    <li><a href="#" th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
+                                    <li><a href="#" th:href="@{/usuarios/usuarioForm?username=none}">Registro</a></li>
+                                    <li class="has-children"><a href="#">Tipos de Usuario</a>
+                                        <ul class="dropdown">
+                                            <li><a href="#" th:href="@{/tipoUsuarios/showTipoUsuarios}">Consulta</a></li>
+                                            <li><a href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm}">Registro</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/login}">Inicio sesión</a></li>
+                            <li sec:authorize="isAuthenticated()" class="has-children" >
+                                <span sec:authentication="name"></span>
+                                <ul class="dropdown">
+                                    <li><a href="#" th:href="@{/logout}">Salir</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+<div class="site-section site-section-sm bg-primary" th:fragment="footer">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h2 class="text-white">UABC Mexicali</h2>
+                <p class="lead text-white-5">Sistema de Registro de Asistencia a Eventos Universitarios</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <a th:href="@{/asistentes/asistenteForm?id=0}" class="btn btn-outline-primary btn-block py-3 btn-lg">Registrate!</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

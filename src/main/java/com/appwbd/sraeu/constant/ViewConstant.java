@@ -13,7 +13,9 @@ public class ViewConstant {
     public static final String EVENTO_FORM = "RegistroEvento";
     public static final String EVENTOS = "ConsultaEvento" ;
 
-    public static final String LOGIN = "LoginTEMP";
+    public static final String LOGIN = "Log";
+
+    public static final String INDEX = "index";
 
     public static final String LUGAR_FORM = "RegistroLugar";
     public static final String LUGARES = "ConsultaLugar";
