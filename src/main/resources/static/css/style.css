@@ -1234,8 +1234,7 @@ nav > div a.nav-item.nav-link:focus
 
 
 /*calendar*/
-
-
+/*
 .calendar{
   left: 150px;
   color: #fff;
@@ -1266,7 +1265,6 @@ nav > div a.nav-item.nav-link:focus
   transform: scale(0.9) translate(30px,30px);
   opacity: 0;
   visibility: hidden;
-  /*   border-radius: 5px; */
   display: none;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -1370,11 +1368,11 @@ input.add-event-edit::-webkit-input-placeholder {
   color: #fff;
 }
 
-input.add-event-edit:-moz-placeholder { /* Firefox 18- */
+input.add-event-edit:-moz-placeholder {
   color: #fff;
 }
 
-input.add-event-edit::-moz-placeholder {  /* Firefox 19+ */
+input.add-event-edit::-moz-placeholder {
   color: #fff;
 }
 
@@ -1409,10 +1407,7 @@ input.add-event-edit:-ms-input-placeholder {
 .event-btn--cancel:hover{
   box-shadow: 0px 2px 4px rgba(2,2,2,0.2);
 }
-/* .add-event-btn:hover, .add.event-btn:focus{
-  background: #00258e;
-  box-shadow: 0px -1px 2px rgba(3,2,2,0.2);
-} */
+
 .day-highlight .day-events-link{
   border-bottom: 2px solid #222;
   padding: 0;
@@ -1450,7 +1445,6 @@ input.add-event-edit:-ms-input-placeholder {
 }
 .day-inspiration-quote{
   position: absolute;
-  /*   top: 90px; */
   margin-top: -40px;
   left: 10%;
   width: 80%;
@@ -1477,8 +1471,6 @@ input.add-event-edit:-ms-input-placeholder {
 .day-event-list-ul li {
   padding: 10px;
   margin: 10px 0;
-  /*   background: #04b6e2; */
-  /*   box-shadow: 0px 1px 1px  rgba(2,2,2,0.5); */
   position: relative;
 }
 .event-dates small{
@@ -1491,7 +1483,6 @@ input.add-event-edit:-ms-input-placeholder {
   color: #04b6e2;
   font-size: 18px;
   text-transform: lowercase;
-  /*   position: relative; */
 }
 .event-delete{
   position: absolute;
@@ -1636,4 +1627,6 @@ input.add-event-edit:-ms-input-placeholder {
   padding: 2px 5px;
   border-bottom: 1px solid #fff;
 }
+
+ */
 /*termina */
