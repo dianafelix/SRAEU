@@ -85,4 +85,9 @@ public class EventoController {
         eventoService.removeEvento(id);
         return showEventos();
     }
+
+    @GetMapping("/calendario")
+    public String calendario(Model model) {
+        return ViewConstant.CALENDARIO;
+    }
 }

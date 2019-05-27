@@ -17,4 +17,6 @@ public class ViewConstant {
 
     public static final String LUGAR_FORM = "RegistroLugar";
     public static final String LUGARES = "ConsultaLugar";
+
+    public static final String CALENDARIO = "Calendario";
 }
