@@ -131,3 +131,19 @@ h1 {
     font: normal 20pt 'Karla', sans-serif;
     padding: 0.2em;
 }
+
+dialog {
+    float: left;
+    height: 400px;
+    width: 300px;
+    font-size: 20px;
+    font-family: Arial;
+}
+
+dialog button {
+    font-size: 20px;
+    color: white;
+    background-color: cadetblue;
+    font-family: Arial;
+    float: right;
+}
