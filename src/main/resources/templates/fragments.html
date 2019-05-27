@@ -34,13 +34,13 @@
                                 <a href="#">Eventos</a>
                                 <ul class="dropdown">
                                     <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/eventos/showEventos}">Consulta</a></li>
-                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/eventos/eventoForm}"Registro></a></li>
+                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/eventos/eventoForm}">Registro</a></li>
                                 </ul>
                             </li>
                             <li sec:authorize="isAuthenticated()" class="has-children">
                                 <a href="#">Lugares</a>
                                 <ul class="dropdown">
-                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/lugares/showLugares}"></a></li>
+                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/lugares/showLugares}">Consulta</a></li>
                                     <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/lugares/lugarForm?id=0}">Registro</a></li>
                                 </ul>
                             </li>
@@ -61,7 +61,11 @@
                             <li sec:authorize="isAuthenticated()" class="has-children" >
                                 <span sec:authentication="name"></span>
                                 <ul class="dropdown">
-                                    <li><a href="#" th:href="@{/logout}">Salir</a></li>
+                                    <li>
+                                        <form th:action="@{/logout}" method="post">
+                                            <button type="submit" style="border:none;background-color: white;cursor: pointer">Cerrar Sesión</button>
+                                        </form>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
