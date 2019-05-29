@@ -27,8 +27,8 @@ public class Asistente {
     @Column(name="tipo")
     private String tipo;
 
-    @ManyToMany(mappedBy = "asistentes")
-    private Set<Evento> eventos = new HashSet<>();
+    //@ManyToMany(mappedBy = "asistentes")
+    //private Set<Evento> eventos = new HashSet<>();
 
 
 

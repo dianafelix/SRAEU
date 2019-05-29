@@ -35,6 +35,7 @@
 
     <div th:replace="fragments.html :: menu"></div>
 </div>
+     
 
 <div class="site-blocks-cover inner-page-cover " th:style="'background-image: url('+@{/images/fondo.jpg}+');'" data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
@@ -89,6 +90,17 @@
                             <label class="font-weight-bold" for="email">Lugar:</label>
                             <select id="selectLugar">
                                 <option id="lugar" th:each="lugar : ${lugarModels}" th:value="${lugar.id}" th:text="${lugar.nombre}">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="font-weight-bold" for="email">Lugar:</label>
+                            <select th:field="*{lugar}" required>
+                                <option value="Vicerrectoria" text="Vicerrectoria"> Vicerrectoria </option>
+                                <option value="Facultad de Ciencias Administrativas" text="Facultad de Ciencias Administrativas"> Facultad de Ciencias Administrativas </option>
+
                             </select>
                         </div>
                     </div>
