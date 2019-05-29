@@ -3,6 +3,7 @@ package com.appwbd.sraeu.component;
 import com.appwbd.sraeu.entity.Lugar;
 import com.appwbd.sraeu.model.EventoModel;
 import com.appwbd.sraeu.entity.Evento;
+import com.appwbd.sraeu.model.LugarModel;
 import com.appwbd.sraeu.services.LugarService;
 import javafx.util.converter.TimeStringConverter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Component("eventoConverter")
 public class EventoConverter {
@@ -25,11 +28,16 @@ public class EventoConverter {
         String[] fecha1 = eventoModel.getFechaI().split("T");
         Date fech1 = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(fecha1[0] + " " + fecha1[1]);
         Evento evento = new Evento();
+        List<Lugar> lugares = new ArrayList<>();
         evento.setId(eventoModel.getId());
         evento.setCupo(eventoModel.getCupo());
         evento.setNombre(eventoModel.getNombre());
         evento.setFechaI(fech1);
         evento.setFechaF(fech);
+        for(LugarModel lugarModel : eventoModel.getLugares()){
+            lugares.add(lugarService.convertLugarModel2Lugar(lugarModel));
+        }
+        evento.setLugares(lugares);
         /*Lugar testLugar = new Lugar();
         testLugar.setId(1);
         testLugar.setNombre("AULA MAGNA");
@@ -43,6 +51,7 @@ public class EventoConverter {
 
     public EventoModel convertEvento2EventoModel(Evento evento) {
     EventoModel eventoModel = new EventoModel();
+    List<LugarModel> lugarModels = new ArrayList<>();
     eventoModel.setId(evento.getId());
     eventoModel.setCupo(evento.getCupo());
     eventoModel.setNombre(evento.getNombre());
@@ -51,6 +60,10 @@ public class EventoConverter {
 /*    eventoModel.setLugar(evento.getLugar().getId());
     eventoModel.setLugar(evento.getLugar().getNombre());
     eventoModel.setAsistentes(evento.getAsistentes());*/
+        for(Lugar lugar : evento.getLugares()){
+            lugarModels.add(lugarService.convertLugar2LugarModel(lugar));
+        }
+        eventoModel.setLugares(lugarModels);
     return eventoModel;
     }
 }

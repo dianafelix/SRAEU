@@ -16,4 +16,7 @@ public interface EventoService{
     public abstract void removeEvento(int id);
 
     public abstract EventoModel findEventoByIdModel(int id);
+
+    public abstract Evento convertEventoModel2Evento(EventoModel eventoModel) throws Exception;
+
 }

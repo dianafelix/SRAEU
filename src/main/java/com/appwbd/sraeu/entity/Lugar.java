@@ -1,7 +1,12 @@
 package com.appwbd.sraeu.entity;
 
 import lombok.Data;
+import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -18,8 +23,10 @@ public class Lugar {
     @Column(name="direccion")
     private String direccion;
 
-    @OneToMany(mappedBy = "lugar", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<Evento> eventoLugares;
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "lugares", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Evento> eventos;
 
 
     public Lugar(int id, String nombre, String direccion ) {

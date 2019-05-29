@@ -1,10 +1,13 @@
 package com.appwbd.sraeu.entity;
 
 import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -32,16 +35,18 @@ public class Evento {
             inverseJoinColumns = @JoinColumn(name = "asistente_id", referencedColumnName = "id"))
     private Set<Asistente> asistentes;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "lugar")
-    private Lugar lugar;
+    @ToString.Exclude
+    @ManyToMany
+    @JoinTable(name = "lugar_evento",
+            joinColumns = @JoinColumn(name = "evento_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "lugar_id", referencedColumnName = "id"))
+    private List<Lugar> lugares;
 
-    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, Lugar lugar) {
+    public Evento(String nombre, Date fechaI, Date fechaF, int cupo) {
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;
         this.cupo = cupo;
-        this.lugar = lugar;
 
     }
 

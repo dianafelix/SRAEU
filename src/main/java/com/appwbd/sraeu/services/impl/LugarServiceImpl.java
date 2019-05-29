@@ -52,6 +52,16 @@ public class LugarServiceImpl implements LugarService {
     }
 
     @Override
+    public LugarModel convertLugar2LugarModel(Lugar lugar) {
+        return null;
+    }
+
+    @Override
+    public Lugar convertLugarModel2Lugar(LugarModel lugarModel) {
+        return null;
+    }
+
+    @Override
     public void removeLugar(int id) {
         Lugar lugar  = findLugarById(id);
         if(lugar != null){

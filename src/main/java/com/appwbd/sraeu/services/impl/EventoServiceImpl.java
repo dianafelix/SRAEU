@@ -52,6 +52,11 @@ public class EventoServiceImpl implements EventoService {
     }
 
     @Override
+    public Evento convertEventoModel2Evento(EventoModel eventoModel) throws Exception {
+        return eventoConverter.convertEventoModel2Evento(eventoModel);
+    }
+
+    @Override
     public void removeEvento(int id) {
         Evento evento  = findEventoById(id);
         if(evento != null){

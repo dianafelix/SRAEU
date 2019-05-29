@@ -19,6 +19,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -37,6 +38,7 @@ public class EventoController {
     @Qualifier("lugarServiceImpl")
     private LugarService lugarService;
 
+    private List<LugarModel> lugares = new ArrayList<>();
 
 
     private static final Log log = LogFactory.getLog(EventoController.class);
@@ -49,16 +51,17 @@ public class EventoController {
     @GetMapping("/eventoForm")
     public String redirectEventoForm(Model model, @RequestParam(name = "id", required = false) int id) {
         EventoModel eventoModel = new EventoModel();
-        /*List<AsistenteModel> asistenteModels = asistenteService.listAllAsistentes();
-        List<LugarModel> lugarModels = lugarService.listAllLugares();*/
+        lugares = new ArrayList<>();
+        /*List<AsistenteModel> asistenteModels = asistenteService.listAllAsistentes();*/
+        List<LugarModel> lugarModels = lugarService.listAllLugares();
         boolean b = true;
         if(id != 0) {
             eventoModel = eventoService.findEventoByIdModel(id);
             b = false;
         }
         model.addAttribute("eventoModel",eventoModel);
-        /*model.addAttribute("asistenteModels", asistenteModels);
-        model.addAttribute("lugarModels", lugarModels);*/
+        /*model.addAttribute("asistenteModels", asistenteModels);*/
+        model.addAttribute("lugarModels", lugarModels);
         model.addAttribute("b",b);
         return ViewConstant.EVENTO_FORM;
     }
@@ -66,6 +69,7 @@ public class EventoController {
     @PostMapping("/addevento")
     public String addEvento(@ModelAttribute(name = "eventoModel") EventoModel eventoModel, Model model)throws Exception {
         log.info("Method: addEvento() -- Params: " + eventoModel.toString());
+        eventoModel.setLugares(lugares);
         if (eventoService.addEvento(eventoModel) != null)
             model.addAttribute("result", 1);
         else

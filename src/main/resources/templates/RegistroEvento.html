@@ -84,6 +84,14 @@
                             <input type="number" id="subject" class="form-control" placeholder="Cupo" th:field="*{cupo}" th:value="${cupo}"  min="0" required>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="font-weight-bold" for="email">Lugar:</label>
+                            <select id="selectLugar">
+                                <option id="lugar" th:each="lugar : ${lugarModels}" th:value="${lugar.id}" th:text="${lugar.nombre}">
+                            </select>
+                        </div>
+                    </div>
 
                     <!--<div class="row form-group">
                         <div class="col-md-12">

@@ -15,4 +15,9 @@ public interface LugarService{
     public abstract void removeLugar(int id);
 
     public abstract LugarModel findLugarByIdModel(int id);
+
+    public abstract LugarModel convertLugar2LugarModel(Lugar lugar);
+
+    public abstract Lugar convertLugarModel2Lugar(LugarModel lugarModel);
+
 }
