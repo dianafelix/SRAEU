@@ -71,7 +71,6 @@ public class UsuarioController {
         String currentUser = securityService.findLoggedInUsername();
         System.out.println(currentUser);
 
-
         mav.addObject("usuarios",usuarioService.listAllUsers());
         mav.addObject("currentUser", currentUser);
 

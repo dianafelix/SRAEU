@@ -17,12 +17,6 @@ p {
     font-family: 'Karla', sans-serif;
 }
 
-#close {
-    background-color: #d35548;
-    width: 70px;
-    height: 30px;
-    text-align: center;
-}
 
 * {
     margin: auto;
@@ -56,7 +50,7 @@ h1 {
 
 #diasc th {
     color: #f8eefe;
-    background-color: #40a89b
+    background-color: #2C8332;
 }
 
 #diasc td {
@@ -138,12 +132,18 @@ dialog {
     width: 300px;
     font-size: 20px;
     font-family: Arial;
+    position: absolute;
+    margin-top: 20%;
+    margin-bottom: 20%;
 }
 
 dialog button {
     font-size: 20px;
     color: white;
-    background-color: cadetblue;
+    background-color:#d35548 ;
     font-family: Arial;
     float: right;
+    text-align: center;
+
 }
+

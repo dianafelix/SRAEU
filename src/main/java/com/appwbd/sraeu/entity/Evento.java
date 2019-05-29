@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.sql.Time;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -25,18 +26,21 @@ public class Evento {
     private Date fechaF;
     @Column(name = "cupo")
     private int cupo;
+    @Column(name="lugar")
+    private String lugar;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "evento_asistente",
+    /*@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "evento_lugar",
             joinColumns = @JoinColumn(name = "evento_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "asistente_id", referencedColumnName = "id"))
-    private Set<Asistente> asistentes;
+            inverseJoinColumns = @JoinColumn(name = "lugar_id", referencedColumnName = "id"))*/
 
+/*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lugar")
-    private Lugar lugar;
+    private List<Lugar> lugares;
 
-    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, Lugar lugar) {
+*/
+    public Evento(String nombre, Date fechaI, Date fechaF, int cupo, String lugar) {
         this.nombre = nombre;
         this.fechaI = fechaI;
         this.fechaF = fechaF;

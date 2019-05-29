@@ -53,6 +53,18 @@
       <div class="col-md-12 col-lg-8 mb-5">
         <!--calendario-->
         <div id="calendario">
+          <dialog id="ms">
+            <p> Eventos </p>
+            <br>
+
+            <p th:each="fila:${lista}"
+
+               th:text="${'nombre: '+fila.getNombre()+ ' '+'fecha: '+' '+fila.getFechaI()+'--' + fila.getFechaF()+' '+'Lugar: '+' '+fila.getLugar()+' '+'cupo: '+' '+fila.getCupo()}">
+
+              valor </br>  </p>
+            </br>
+            <button id="close" onclick="document.getElementById('ms').close()">CERRAR</button>
+          </dialog>
           <div id="anterior" onclick="mesantes()"></div>
           <div id="posterior" onclick="mesdespues()"></div>
           <h2 id="titulos"></h2>
@@ -189,17 +201,7 @@
             </form>
           </div>
         </div>
-        <dialog id="ms">
-          <p> Eventos </p>
-          <br>
-          <!--
-          <p th:each="fila:${lista}"
-             th:text="${fila.getFecha()+' '+fila.getAsunto() + ' ' + fila.getMedico()+'--' + fila.getHora()}">
-            valor </br>  </p>
-            -->
-          </br>
-          <button id="close" onclick="document.getElementById('ms').close()">CERRAR</button>
-        </dialog>
+
         <!--fin calendario-->
         <div class="site-section site-section-sm bg-primary">
           <div class="container">

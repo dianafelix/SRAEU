@@ -73,7 +73,7 @@ function escribirdias() {
             celda = fila.getElementsByTagName("td")[j];
             celda.innerHTML = midia;
             //Recuperar estado inicial al cambiar de mes:
-            celda.style.backgroundColor = "#a4cfe5";
+            celda.style.backgroundColor = "#f7f9f9";
             celda.style.color = "#120012";
             //domingos en rojo
             if (j == 6) {
@@ -170,10 +170,10 @@ function escribircita() {
 }
 
 function colorc(celda) {
-    celda.style.backgroundColor = "#ffa979";
+    celda.style.backgroundColor = "#";
 }
 
 function coloro(celda) {
-    celda.style.backgroundColor = "#a4cfe5";
+    celda.style.backgroundColor = "#f7f9f9";
 }
 
