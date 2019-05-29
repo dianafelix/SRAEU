@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <title>Consulta Lugares</title>
     <meta charset="utf-8">
@@ -65,8 +66,8 @@
 
 
                     <td class="text-center">
-                        <a class='btn btn-info btn-xs' href="#" th:href="@{/lugares/lugarForm?id=__${lugar.id}__}"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                        <a class="btn btn-danger btn-xs" href="#" th:href="@{/lugares/removeLugar?id=__${lugar.id}__}"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>
+                        <a class='btn btn-info btn-xs' href="#" th:href="@{/lugares/lugarForm?id=__${lugar.id}__}" sec:authorize="hasAuthority('MODIFICAR')"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                        <a class="btn btn-danger btn-xs" href="#" th:href="@{/lugares/removeLugar?id=__${lugar.id}__}" sec:authorize="hasAuthority('ELIMINAR')"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>
                 </tr>
 
 
