@@ -38,7 +38,7 @@ public class EventoController {
     @Qualifier("lugarServiceImpl")
     private LugarService lugarService;
 
-    private List<LugarModel> lugares = new ArrayList<>();
+    private List<LugarModel> lugares;
 
 
     private static final Log log = LogFactory.getLog(EventoController.class);
