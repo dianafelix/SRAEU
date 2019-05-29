@@ -53,12 +53,12 @@ public class LugarServiceImpl implements LugarService {
 
     @Override
     public LugarModel convertLugar2LugarModel(Lugar lugar) {
-        return null;
+        return lugarConverter.convertLugar2LugarModel(lugar);
     }
 
     @Override
     public Lugar convertLugarModel2Lugar(LugarModel lugarModel) {
-        return null;
+        return lugarConverter.convertLugarToModel2Lugar(lugarModel);
     }
 
     @Override

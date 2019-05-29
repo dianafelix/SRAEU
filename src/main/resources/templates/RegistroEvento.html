@@ -89,10 +89,8 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Lugar:</label>
-                            <select th:field="*{lugar}" required>
-                                <option value="Vicerrectoria" text="Vicerrectoria"> Vicerrectoria </option>
-                                <option value="Facultad de Ciencias Administrativas" text="Facultad de Ciencias Administrativas"> Facultad de Ciencias Administrativas </option>
-
+                            <select id="selectLugar">
+                                <option id="lugar" th:each="lugar : ${lugarModels}" th:value="${lugar.id}" th:text="${lugar.nombre}">
                             </select>
                         </div>
                     </div>

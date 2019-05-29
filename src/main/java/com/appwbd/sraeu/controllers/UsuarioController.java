@@ -40,7 +40,7 @@ public class UsuarioController {
     public String redirectUserForm(Model model, @RequestParam(name = "username", required = false) String username) {
         UsuarioModel usuarioModel = new UsuarioModel();
         boolean b = true;
-        String currentUser = securityService.findLoggedInUsername();
+       String currentUser = securityService.findLoggedInUsername();
 
         if(!username.equals("none")) {
             usuarioModel = usuarioService.findUserByUsernameModel(username);
