@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="#" th:href="@{/css/animate.css}">
     <link rel="stylesheet" href="#" th:href="@{/fonts/flaticon/font/flaticon.css}">
     <link rel="stylesheet" href="#" th:href="@{/css/fl-bigmug-line.css}">
-    <link rel="stylesheet" href="#" th:href="@{/css/calendario.css}">
+    <link rel="stylesheet" href="../static/css/calendario.css" th:href="@{/css/calendario.css}">
 
 
     <link rel="stylesheet" href="#" th:href="@{/css/aos.css}">
@@ -179,7 +179,7 @@
           <div id="fechaactual"><i onclick="actualizar()"></i></div>
           <div id="buscafecha">
             <form action="#" name="buscar">
-              <p> FECHA A BUSCAR</p>
+              <p onclick="getCellValues()"> FECHA A BUSCAR</p>
               <br/>
               <select name="buscames">
                 <option value="0">Enero</option>
@@ -233,7 +233,7 @@
   <script th:src="@{'/js/jquery.magnific-popup.min.js'}"></script>
   <script th:src="@{'/js/bootstrap-datepicker.min.js'}"></script>
   <script th:src="@{'/js/aos.js'}"></script>
-  <script th:src="@{'/js/calendario.js'}"></script>
+  <script src="../static/js/calendario.js" th:src="@{'/js/calendario.js'}"></script>
 
   <script th:src="@{'/js/main.js'}"></script>
 

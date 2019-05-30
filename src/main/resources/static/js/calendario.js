@@ -27,6 +27,8 @@ window.onload = function () {
     cabecera()
     primeralinea()
     escribirdias()
+
+    getCellValues()
 }
 
 function cabecera() {
@@ -165,8 +167,8 @@ function mifecha() {
 
 function escribircita() {
     cita = document.getElementsByName(Cita);
-    mens = document.getElementById("ms")
-    document.write("hola")
+    mens = document.getElementById("ms");
+    document.write("hola");
 }
 
 function colorc(celda) {
@@ -177,3 +179,15 @@ function coloro(celda) {
     celda.style.backgroundColor = "#f7f9f9";
 }
 
+function getCellValues() {
+    var table = document.getElementById("diasc");
+    var titulo = document.getElementById("titulos").innerHTML.trim().split(" ");
+    var mes = titulo[0] + " " + titulo[2];
+    mesactual = false;
+    for(var r = 1, n = table.rows.length; r < n; r++) {
+        for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+            valor = parseInt(table.rows[r].cells[c].innerHTML);
+                alert(valor + " " + mes);
+        }
+    }
+}
