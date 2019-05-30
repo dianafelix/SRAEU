@@ -35,25 +35,26 @@ public class EventoConverter {
         evento.setNombre(eventoModel.getNombre());
         evento.setFechaI(fech1);
         evento.setFechaF(fech);
-        evento.setLugar(new Lugar(1,"PRUEBA","PRUEBA"));
-        //evento.setLugar(lugarService.convertLugarModel2Lugar(eventoModel.getLugar()));
+        //evento.setLugar(new Lugar(1,"PRUEBA","PRUEBA"));
+        evento.setLugar(lugarService.findLugarById(eventoModel.getLugar_id()));
 
         return evento;
     }
 
     public EventoModel convertEvento2EventoModel(Evento evento) {
     EventoModel eventoModel = new EventoModel();
-    List<AsistenteModel> asistenteModels = new ArrayList();
-    LugarModel lugarModel = new LugarModel();
+    List<String> asistenteNames= new ArrayList();
     eventoModel.setId(evento.getId());
     eventoModel.setCupo(evento.getCupo());
     eventoModel.setNombre(evento.getNombre());
     eventoModel.setFechaF(new SimpleDateFormat("yyyy-MM-dd hh:mm").format(evento.getFechaF()));
     eventoModel.setFechaI(new SimpleDateFormat("yyyy-MM-dd hh:mm").format(evento.getFechaI()));
-    //eventoModel.setLugar(new LugarModel(1,"PRUEBA","PRUEBA"));
-    if(eventoModel.getLugar() != null)
-        lugarModel = lugarService.convertLugar2LugarModel(evento.getLugar());
-    eventoModel.setLugar(lugarModel);
+    eventoModel.setLugar_id(evento.getLugar().getId());
+    eventoModel.setLugar_nombre(evento.getLugar().getNombre());
+    for(Asistente asistente : evento.getAsistentes()){
+        asistenteNames.add(asistente.getNombre() + " " + asistente.getApellido());
+    }
+    eventoModel.setAsistentes(asistenteNames);
 
     return eventoModel;
     }

@@ -67,7 +67,6 @@ public class EventoController {
     @PostMapping("/addevento")
     public String addEvento(@ModelAttribute(name = "eventoModel") EventoModel eventoModel, Model model)throws Exception {
         log.info("Method: addEvento() -- Params: " + eventoModel.toString());
-        eventoModel.setLugar(new LugarModel());
         if (eventoService.addEvento(eventoModel) != null)
             model.addAttribute("result", 1);
         else

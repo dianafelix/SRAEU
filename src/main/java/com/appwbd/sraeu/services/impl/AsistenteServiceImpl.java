@@ -53,6 +53,16 @@ public class AsistenteServiceImpl implements AsistenteService {
     }
 
     @Override
+    public AsistenteModel findAsistenteByMatriculaModel(int matricula) {
+        Asistente asistente = asistenteRepository.findByMat(matricula);
+        AsistenteModel asistenteModel = new AsistenteModel();
+        if(asistente!=null)
+            asistenteModel = asistenteConverter.convertAsistente2AsistenteModel(asistente);
+
+        return asistenteModel;
+    }
+
+    @Override
     public void removeAsistente(int id) {
         Asistente asistente = findAsistenteById(id);
         if(asistente != null)

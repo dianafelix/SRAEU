@@ -33,74 +33,7 @@
 
 
 
-    <div class="site-navbar" th:fragment="menu">
-        <div class="container py-1">
-            <div class="row align-items-center">
-                <div class="col-8 col-md-8 col-lg-4">
-                    <h1 class=""><a href="index.html" class="h5 text-uppercase text-black"><strong><span class="text-danger"></span></strong></a></h1>
-                </div>
-                <div class="col-4 col-md-4 col-lg-8">
-                    <nav class="site-navigation text-right text-md-right" role="navigation">
-
-                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
-                        <ul class="site-menu js-clone-nav d-none d-lg-block">
-                            <li>
-                                <a href="#" th:href="@{/inicio}">Inicio</a>
-                            </li>
-                            <li class="has-children" sec:authorize="isAuthenticated()">
-                                <a href="#">Asistentes</a>
-                                <ul class="dropdown">
-                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/asistentes/showAsistentes}">Consulta</a></li>
-                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/asistentes/asistenteForm?id=0}">Registro</a></li>
-                                </ul>
-                            </li>
-                            <li sec:authorize="isAuthenticated()" class="has-children">
-                                <a href="#">Eventos</a>
-                                <ul class="dropdown">
-                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/eventos/showEventos}">Consulta</a></li>
-                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/eventos/eventoForm?id=0}">Registro</a></li>
-                                </ul>
-                            </li>
-                            <li sec:authorize="isAuthenticated()" class="has-children">
-                                <a href="#">Lugares</a>
-                                <ul class="dropdown">
-                                    <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/lugares/showLugares}">Consulta</a></li>
-                                    <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/lugares/lugarForm?id=0}">Registro</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-children" sec:authorize="hasAuthority('MANTENIMIENTOU')">
-                                <a href="#">Usuarios</a>
-                                <ul class="dropdown">
-                                    <li><a href="#" th:href="@{/usuarios/showUsuarios}">Consulta</a></li>
-                                    <li><a href="#" th:href="@{/usuarios/usuarioForm?username=none}">Registro</a></li>
-                                    <li class="has-children"><a href="#">Tipos de Usuario</a>
-                                        <ul class="dropdown">
-                                            <li><a href="#" th:href="@{/tipoUsuarios/showTipoUsuarios}">Consulta</a></li>
-                                            <li><a href="#" th:href="@{/tipoUsuarios/tipoUsuarioForm?id=0}">Registro</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/login}">Inicio sesión</a></li>
-                            <li sec:authorize="isAuthenticated()" class="has-children" >
-                                <span sec:authentication="name"></span>
-                                <ul class="dropdown">
-                                    <li>
-                                        <form th:action="@{/logout}" method="post">
-                                            <button type="submit" style="border:none;background-color: white;cursor: pointer">Cerrar Sesión</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
+    <div th:replace="fragments.html :: menu"></div>
 </div>
 
 <div class="site-blocks-cover inner-page-cover " th:style="'background-image: url('+@{/images/fondo.jpg}+');'" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -117,29 +50,22 @@
 <div class="site-section">
     <div class="container">
         <div class="row col-md-10 col-md-offset-2 custyle">
-            <table class="table table-striped custab">
+            <table class="table table-striped custab1">
                 <thead>
 
                 <tr>
-                    <th>Nombre del Evento</th>
-                    <th>Fecha de Inicio / Hora de Inicio</th>
-                    <th>Fecha de Fin / Hora de Fin</th>
-                    <th>Lugar</th>
-
-
-                    <th class="text-center">Acción</th>
+                    <td>Nombre del Evento</td><td th:text="${eventoModel.nombre}"></td>
                 </tr>
                 </thead>
                 <tr>
-                    <td th:text="${eventoModel.nombre}"></td>
-                    <td th:text="${eventoModel.fechaI}"></td>
-                    <td th:text="${eventoModel.fechaF}"></td>
-                    <td th:text="${eventoModel.lugar}"></td>
-
-
+                    <td>Fecha de Inicio / Hora de Inicio</td><td th:text="${eventoModel.fechaI}"></td>
                 </tr>
-
-
+                <tr>
+                    <td>Fecha de Fin / Hora de Fin</td><td th:text="${eventoModel.fechaF}"></td>
+                </tr>
+                <tr>
+                    <td>Lugar</td><td th:text="${eventoModel.lugar_nombre}"></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -148,62 +74,65 @@
 <div class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-8 mb-5">
-                <form action="#" th:action="@{/asistencias/takeAsistencia}" th:object="${asistenciaModel}" method="post" class="p-5 bg-white border">
-                    <div class="row form-group">
-                        <div class="col-md-12 mb-3 mb-md-0">
-                            <input type="hidden" th:field="*{evento_Id}" th:value="${evento_Id}">
-                            <input type="hidden" th:field="*{asistente_Id}" th:value="${asistente_Id}">
-                            <label class="font-weight-bold" for="fullname">Matricula (Opcional):</label>
-                            <input type="number" id="fullname" class="form-control" placeholder="Matricula" th:field="*{mat}" th:value="${mat}"></div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Nombre:</label>
-                            <input type="text" id="email" class="form-control" placeholder="Nombre" th:field="*{nombre}" th:value="${nombre}">
+            <div class="col-md-12 col-lg-8 mb-5" id="seccion">
+                    <form action="#" th:action="@{/asistencias/takeAsistencia}" th:object="${asistenciaModel}" method="post" class="p-5 bg-white border">
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <input type="hidden" th:field="*{evento_Id}" th:value="${evento_Id}" id="evento_Id">
+                                <input type="hidden" th:field="*{asistente_Id}" th:value="${asistente_Id}">
+                                <p th:if="${found == false}">No se encontro la matricula</p>
+                                <label class="font-weight-bold" for="fullname">Matricula (Opcional):</label>
+                                <input type="number" id="fullname" class="form-control" placeholder="Matricula" th:field="*{mat}" th:value="${mat}">
+                                <button type="button" onclick="findAsistente()">BUSCAR</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Apellido:</label>
-                            <input type="text" id="email" class="form-control" placeholder="Apellido" th:field="*{apellido}" th:value="${apellido}">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="email">Nombre:</label>
+                                <input type="text" id="email" class="form-control" placeholder="Nombre" th:field="*{nombre}" th:value="${nombre}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Correo:</label>
-                            <input type="email" id="subject" class="form-control" placeholder="Correo" th:field="*{correo}" th:value="${correo}">
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="email">Apellido:</label>
+                                <input type="text" id="email" class="form-control" placeholder="Apellido" th:field="*{apellido}" th:value="${apellido}">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Teléfono:</label>
-                            <input type="text" id="email" class="form-control" placeholder="Teléfono" th:field="*{telefono}" th:value="${telefono}">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="email">Correo:</label>
+                                <input type="email" id="subject" class="form-control" placeholder="Correo" th:field="*{correo}" th:value="${correo}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <label class="font-weight-bold" for="email">Tipo de Asistente:</label>
-                            <select class="form-control" th:field="*{tipo}">
-                                <option th:value="Profesor">Profesor</option>
-                                <option th:value="Estudiante">Estudiante</option>
-                                <option th:value="Invitado">Invitado</option>
-                            </select>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="email">Teléfono:</label>
+                                <input type="text" id="email" class="form-control" placeholder="Teléfono" th:field="*{telefono}" th:value="${telefono}">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <input type="submit" value="Registrar" class="btn btn-primary  py-2 px-4 rounded-0">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="font-weight-bold" for="email">Tipo de Asistente:</label>
+                                <select class="form-control" th:field="*{tipo}">
+                                    <option th:value="Profesor">Profesor</option>
+                                    <option th:value="Estudiante">Estudiante</option>
+                                    <option th:value="Invitado">Invitado</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Registrar" class="btn btn-primary  py-2 px-4 rounded-0">
+                            </div>
+                        </div>
 
 
-                </form>
+                    </form>
             </div>
 
 
@@ -249,6 +178,7 @@
 <script th:src="@{'/js/aos.js'}"></script>
 
 <script th:src="@{'/js/main.js'}"></script>
+<script th:src="@{'/js/asistencia.js'}"></script>
 
 </body>
 </html>

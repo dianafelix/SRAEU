@@ -58,8 +58,7 @@
                     <th>Fecha de Fin / Hora de Fin</th>
                     <th>Cupo</th>
                     <th>Lugar</th>
-                    <!--<th>Lugar</th>
-                    <th>Asistentes</th>-->
+                    <th>Asistentes</th>
 
                     <th class="text-center">Acción</th>
                 </tr>
@@ -69,17 +68,12 @@
                     <td th:text="${evento.fechaI}"></td>
                     <td th:text="${evento.fechaF}"></td>
                     <td th:text="${evento.cupo}"></td>
+                    <td th:text="${evento.lugar_nombre}"></td>
                     <td>
                         <select>
-                            <option  th:each="lugar : ${evento.lugares}" th:text="${lugar.nombre}"></option>
+                            <option th:each="asistente : ${evento.asistentes}" th:text="${asistente}"></option>
                         </select>
                     </td>
-
-                    <!--<td th:text="${evento.lugar}"></td>-->
-                    <!--<select >
-                        <option  value="${lugar}" th:value="${lugar.id}" th:text="${lugar.nombre}"></option>
-                    </select>
-                    <td th:text="${evento.asistentes}"></td>-->
 
                     <td class="text-center">
                         <a class='btn btn-info btn-xs' href="#" th:href="@{/eventos/eventoForm?id=__${evento.id}__}"><span class="glyphicon glyphicon-edit"></span> Editar</a>

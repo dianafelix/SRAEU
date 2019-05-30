@@ -15,8 +15,10 @@ public class EventoModel {
     private String nombre;
     private String fechaF;
     private String fechaI;
-    private LugarModel lugar;
+    private int lugar_id;
+    private String lugar_nombre;
     private int cupo;
+    private List<String> asistentes;
 
 
     public EventoModel(){

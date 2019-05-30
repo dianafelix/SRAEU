@@ -2,6 +2,7 @@ package com.appwbd.sraeu.controllers;
 
 import com.appwbd.sraeu.constant.ViewConstant;
 import com.appwbd.sraeu.model.AsistenciaModel;
+import com.appwbd.sraeu.model.AsistenteModel;
 import com.appwbd.sraeu.model.EventoModel;
 import com.appwbd.sraeu.services.AsistenciaService;
 import com.appwbd.sraeu.services.AsistenteService;
@@ -13,6 +14,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.swing.text.View;
 
 @Controller
 @RequestMapping("/asistencias")
@@ -33,8 +36,8 @@ public class AsistenciaController {
     private static final Log log = LogFactory.getLog(AsistenciaController.class);
 
 
-    @GetMapping("/asistenciaForm")
-    public String redirecAsistenteForm(Model model, @RequestParam(name="evento") int evento){
+    @GetMapping("/asistenciaForm/{evento}")
+    public String redirecAsistenteForm(Model model, @PathVariable("evento")int evento){
         EventoModel eventoModel = eventoService.findEventoByIdModel(evento);
 
         AsistenciaModel asistenciaModel = new AsistenciaModel();
@@ -42,8 +45,14 @@ public class AsistenciaController {
         asistenciaModel.setAsistente_Id(0);
         model.addAttribute("eventoModel", eventoModel);
         model.addAttribute("asistenciaModel",asistenciaModel);
+        model.addAttribute("found", true);
 
         return ViewConstant.ASISTENCIA_FORM;
+    }
+
+    @GetMapping("/quagga")
+    public String redirectQuagga(){
+        return "PruebaQuagga";
     }
 
     @PostMapping("/takeAsistencia")
@@ -55,10 +64,30 @@ public class AsistenciaController {
         return "redirect:/eventos/calendario";
     }
 
-    @GetMapping("/findAsistente")
-    public String findAsistente(){
+    @GetMapping("/asistenciaForm/{evento}/{mat}")
+    public String findAsistente(Model model,@PathVariable("evento")int evento,@PathVariable("mat")int mat){
+        AsistenciaModel asistenciaModel = new AsistenciaModel();
+        AsistenteModel asistenteModel = asistenteService.findAsistenteByMatriculaModel(mat);
+        EventoModel eventoModel = eventoService.findEventoByIdModel(evento);
+        boolean found = false;
 
-        return null;
+        if(asistenteModel != null) {
+            asistenciaModel.setAsistente_Id(asistenteModel.getId());
+            asistenciaModel.setNombre(asistenteModel.getNombre());
+            asistenciaModel.setApellido(asistenteModel.getApellido());
+            asistenciaModel.setTelefono(asistenteModel.getTelefono());
+            asistenciaModel.setCorreo(asistenteModel.getCorreo());
+            asistenciaModel.setTipo(asistenteModel.getTipo());
+            found = true;
+        }
+        asistenciaModel.setEvento_Id(evento);
+        asistenciaModel.setMat(mat);
+
+        model.addAttribute("asistenciaModel", asistenciaModel);
+        model.addAttribute("eventoModel", eventoModel);
+        model.addAttribute("found", found);
+
+        return ViewConstant.ASISTENCIA_FORM;
     }
 
 

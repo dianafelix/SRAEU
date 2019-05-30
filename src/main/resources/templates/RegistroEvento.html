@@ -69,14 +69,16 @@
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Fecha de Inicio / Hora de Inicio:</label>
                            <!-- <input type="date" id="email" class="form-control"  th:field="*{fechaI}" th:value="${fechaI}" required>-->
-                            <input type="datetime-local" id="meeting-time" class="form-control" th:field="*{fechaI}" th:value="${fechaI}"  name="meeting-time" required >
+                            <input type="datetime-local" id="meeting-time" class="form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+                                   th:field="*{fechaI}" th:value="${fechaI}"  name="meeting-time" required >
 
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Fecha de Fin / Hora de Fin:</label>
-                            <input type="datetime-local" id="meeting-time" class="form-control"  th:field="*{fechaF}" th:value="${fechaF}" name="meeting-time" required>
+                            <input type="datetime-local" id="meeting-time" class="form-control"  pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}"
+                                   th:field="*{fechaF}" th:value="${fechaF}" name="meeting-time" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -89,7 +91,7 @@
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="font-weight-bold" for="email">Lugar:</label>
-                            <select id="selectLugar">
+                            <select id="selectLugar" th:field="*{lugar_id}">
                                 <option id="lugar" th:each="lugar : ${lugarModels}" th:value="${lugar.id}" th:text="${lugar.nombre}">
                             </select>
                         </div>

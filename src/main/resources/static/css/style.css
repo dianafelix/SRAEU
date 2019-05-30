@@ -1215,6 +1215,17 @@ nav > div a.nav-item.nav-link:focus
   transition: 0.5s;
 }
 
+/*tabla asistencia*/
+.custab1{
+  width: 260px;
+  margin-left: -14%;
+  margin-top: -5%;
+}
+
+#seccion{
+  margin-top: -63%;
+  margin-left: 20%;
+}
 
 /*date*/
 #datepicker{
@@ -1231,7 +1242,22 @@ nav > div a.nav-item.nav-link:focus
   font-size:16px;
 }
 
+/*boton de busqueda de asistente*/
+#buscar{
+  width: 120px;
+  height: 40px;
 
+  background-color: #2C8332;
+  position: absolute;
+  top: 60%;
+  right: 5%;
+  color: white;
+  border: #2C8332;
+}
+#buscar:hover{
+  background-color: #5f9117;
+  border: #5f9117;
+}
 
 /*calendar*/
 /*

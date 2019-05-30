@@ -90,5 +90,65 @@
         </div>
     </div>
 </div>
+
+<div th:fragment="asistencia">
+    <form action="#" th:action="@{/asistencias/takeAsistencia}" th:object="${asistenciaModel}" method="post" class="p-5 bg-white border">
+        <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+                <input type="hidden" th:field="*{evento_Id}" th:value="${evento_Id}">
+                <input type="hidden" th:field="*{asistente_Id}" th:value="${asistente_Id}">
+                <p th:if="${found == false}">No se encontro la matricula</p>
+                <label class="font-weight-bold" for="matricula">Matricula (Opcional):</label>
+                <input type="number" id="matricula" class="form-control" placeholder="Matricula" th:field="*{mat}" th:value="${mat}">
+                <button type="button" th:onclick="'javascript:findAsistente(\''+${evento_Id}+'\');'">BUSCAR</button>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label class="font-weight-bold" for="email">Nombre:</label>
+                <input type="text" id="email" class="form-control" placeholder="Nombre" th:field="*{nombre}" th:value="${nombre}">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label class="font-weight-bold" for="email">Apellido:</label>
+                <input type="text" id="email" class="form-control" placeholder="Apellido" th:field="*{apellido}" th:value="${apellido}">
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label class="font-weight-bold" for="email">Correo:</label>
+                <input type="email" id="subject" class="form-control" placeholder="Correo" th:field="*{correo}" th:value="${correo}">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label class="font-weight-bold" for="email">Teléfono:</label>
+                <input type="text" id="email" class="form-control" placeholder="Teléfono" th:field="*{telefono}" th:value="${telefono}">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <label class="font-weight-bold" for="email">Tipo de Asistente:</label>
+                <select class="form-control" th:field="*{tipo}">
+                    <option th:value="Profesor">Profesor</option>
+                    <option th:value="Estudiante">Estudiante</option>
+                    <option th:value="Invitado">Invitado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Registrar" class="btn btn-primary  py-2 px-4 rounded-0">
+            </div>
+        </div>
+    </form>
+</div>
+
 </body>
 </html>
