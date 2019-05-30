@@ -27,8 +27,6 @@ window.onload = function () {
     cabecera()
     primeralinea()
     escribirdias()
-
-    getCellValues()
 }
 
 function cabecera() {
@@ -179,15 +177,43 @@ function coloro(celda) {
     celda.style.backgroundColor = "#f7f9f9";
 }
 
-function getCellValues() {
+function getCellValues(dia) {
     var table = document.getElementById("diasc");
     var titulo = document.getElementById("titulos").innerHTML.trim().split(" ");
-    var mes = titulo[0] + " " + titulo[2];
-    mesactual = false;
-    for(var r = 1, n = table.rows.length; r < n; r++) {
-        for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-            valor = parseInt(table.rows[r].cells[c].innerHTML);
-                alert(valor + " " + mes);
+    var mes;
+
+    //Calcular mes
+    for(var i = 0; i < meses.length; i++) {
+        if(!titulo[0].localeCompare(meses[i])) {
+            if(i >= 10) {
+                mes = (i + 1) + "-" + titulo[2];
+            }
+            else {
+                mes = "0" + (i + 1) + "-" + titulo[2];
+            }
         }
     }
+    var fecha = dia + "-" + mes;
+    alert(fecha);
+
+    $.ajax({
+        type : 'POST',
+        url : '/eventos/EventosDelDia',
+        data : JSON.stringify({'fecha' : fecha}),
+        //data : fecha,
+        processData: false,
+        contentType: 'application/json',
+        beforeSend: function(xhr){
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        success: function(result){
+            location.reload();
+        },
+        error: function(e){
+            alert("Error: " + e);
+        }
+    });
+
+    document.getElementById('ms').show();
 }

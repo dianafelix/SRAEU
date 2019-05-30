@@ -12,6 +12,7 @@ import com.appwbd.sraeu.services.EventoService;
 import com.appwbd.sraeu.services.LugarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -90,5 +94,25 @@ public class EventoController {
     @GetMapping("/calendario")
     public String calendario(Model model) {
         return ViewConstant.CALENDARIO;
+    }
+
+    @RequestMapping(value = "/EventosDelDia", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody void getEventosDelDia(@RequestBody String fecha) {
+        log.info("Method getEventosDelDia() -- Inicio,  Fecha a buscar:" + fecha);
+        Date fechaB;
+        List<EventoModel> eventosDelDia = new ArrayList();
+        try {
+            fechaB = new SimpleDateFormat("dd-MM-yyyy").parse(fecha);
+            for(EventoModel evento : eventoService.listAllEventos()) {
+                Date fechaI = new SimpleDateFormat("dd-MM-yyyy").parse(evento.getFechaI());
+                Date fechaF = new SimpleDateFormat("dd-MM-yyyy").parse(evento.getFechaF());
+                if (fechaI.equals(fechaB) || fechaF.equals(fechaB)) {
+                    eventosDelDia.add(evento);
+                }
+            }
+        } catch (ParseException e) {
+
+        }
+        log.info("Method getEventosDelDia() -- Fin, Cantidad de eventos: " + eventosDelDia.size());
     }
 }
