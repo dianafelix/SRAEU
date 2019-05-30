@@ -44,12 +44,12 @@ public class AsistenteController {
     @PostMapping("/addasistente")
     public String addAsistente(@ModelAttribute(name = "asistenteModel") AsistenteModel asistenteModel, Model model) {
         log.info("Method: addAsistente() -- Params: " + asistenteModel.toString());
-        if(asistenteModel.getMat() != null){
+       /* if(asistenteModel.getMat() != null){
             if(asistenteService.findAsistenteByMat(asistenteModel.getMat())){
                 model.addAttribute("repetido","Matricula Repetida");
                 return "redirect:/asistentes/asistenteForm?id="+asistenteModel.getId();
             }
-        }
+        }*/
         if (asistenteService.addAsistente(asistenteModel) != null)
             model.addAttribute("result", 1);
         else
