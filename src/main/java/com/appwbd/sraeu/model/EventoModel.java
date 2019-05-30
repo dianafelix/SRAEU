@@ -3,6 +3,7 @@ package com.appwbd.sraeu.model;
 import com.appwbd.sraeu.entity.Asistente;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,9 +15,8 @@ public class EventoModel {
     private String nombre;
     private String fechaF;
     private String fechaI;
-    private List<LugarModel> lugares;
+    private LugarModel lugar;
     private int cupo;
-    private Set<Asistente> asistentes = new HashSet<Asistente>();
 
 
     public EventoModel(){

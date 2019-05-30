@@ -19,4 +19,8 @@ public interface AsistenteService {
     public abstract void removeAsistente(int id);
 
     public abstract  boolean findAsistenteByMat(int mat);
+
+    public abstract Asistente convertAsistenteModel2Asistente(AsistenteModel asistenteModel);
+
+    public abstract AsistenteModel convertAsistente2AsistenteModel(Asistente asistente);
 }

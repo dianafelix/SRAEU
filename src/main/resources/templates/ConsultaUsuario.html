@@ -54,7 +54,6 @@
         <a href="#" th:href="@{/usuarios/usuarioForm?username=none}" class="btn btn-primary btn-xs pull-right"><b>+</b> Agregar Registro</a>
             <tr>
                 <th>Nombre de usuario</th>
-                <th>Contraseña</th>
                 <th>Tipo de Usuario</th>
                 <th>Activo</th>
                 <th class="text-center">Acción</th>
@@ -62,7 +61,6 @@
         </thead>
                 <tr th:each="user : ${usuarios}">
                     <td th:text="${user.username}"></td>
-                    <td>********</td>
                     <td th:text="${user.tipoUsuarioTipo}"></td>
                     <td th:text="${user.enable}"></td>
                     <td class="text-center">

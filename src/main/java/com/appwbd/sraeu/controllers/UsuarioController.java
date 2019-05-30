@@ -40,7 +40,9 @@ public class UsuarioController {
     public String redirectUserForm(Model model, @RequestParam(name = "username", required = false) String username) {
         UsuarioModel usuarioModel = new UsuarioModel();
         boolean b = true;
-       String currentUser = securityService.findLoggedInUsername();
+        String currentUser = securityService.findLoggedInUsername();
+        if(currentUser == null)
+            currentUser = "";
 
         if(!username.equals("none")) {
             usuarioModel = usuarioService.findUserByUsernameModel(username);
@@ -50,7 +52,7 @@ public class UsuarioController {
         model.addAttribute("usuarioModel",usuarioModel);
         model.addAttribute("tipos",tipoUsuarioService.listAllTipos());
         model.addAttribute("b",b);
-        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("currentUser", "TEST");
         return ViewConstant.USUARIO_FORM;
     }
 
@@ -69,7 +71,8 @@ public class UsuarioController {
     public ModelAndView showUsers() {
         ModelAndView mav = new ModelAndView(ViewConstant.USUARIOS);
         String currentUser = securityService.findLoggedInUsername();
-        System.out.println(currentUser);
+        if(currentUser == null)
+            currentUser = "";
 
         mav.addObject("usuarios",usuarioService.listAllUsers());
         mav.addObject("currentUser", currentUser);

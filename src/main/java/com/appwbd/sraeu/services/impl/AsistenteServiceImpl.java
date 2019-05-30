@@ -68,4 +68,14 @@ public class AsistenteServiceImpl implements AsistenteService {
 
         return b;
     }
+
+    @Override
+    public Asistente convertAsistenteModel2Asistente(AsistenteModel asistenteModel) {
+        return asistenteConverter.convertAsistenteModel2Asistente(asistenteModel);
+    }
+
+    @Override
+    public AsistenteModel convertAsistente2AsistenteModel(Asistente asistente) {
+        return asistenteConverter.convertAsistente2AsistenteModel(asistente);
+    }
 }

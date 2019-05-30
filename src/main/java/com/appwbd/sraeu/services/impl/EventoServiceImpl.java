@@ -1,8 +1,11 @@
 package com.appwbd.sraeu.services.impl;
 
+import com.appwbd.sraeu.component.AsistenteConverter;
 import com.appwbd.sraeu.component.EventoConverter;
+import com.appwbd.sraeu.entity.Asistente;
 import com.appwbd.sraeu.entity.Evento;
 import com.appwbd.sraeu.model.EventoModel;
+import com.appwbd.sraeu.repository.AsistenteRepository;
 import com.appwbd.sraeu.repository.EventoRepository;
 import com.appwbd.sraeu.services.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,14 @@ public class EventoServiceImpl implements EventoService {
     @Qualifier("eventoConverter")
     private EventoConverter eventoConverter;
 
+    @Autowired
+    @Qualifier("asistenteRepository")
+    private AsistenteRepository asistenteRepository;
+
+    @Autowired
+    @Qualifier("asistenteConverter")
+    private AsistenteConverter asistenteConverter;
+
     @Override
     public EventoModel addEvento(EventoModel eventoModel) throws Exception {
         //Aquí nos pide una entidad, por lo tanto tenemos que transformar el eventoModel a entidad
@@ -30,6 +41,7 @@ public class EventoServiceImpl implements EventoService {
         Evento evento = eventoRepository.save(temp);
         return eventoConverter.convertEvento2EventoModel(evento);
     }
+
 
     @Override
     public List<EventoModel> listAllEventos() {
@@ -54,6 +66,11 @@ public class EventoServiceImpl implements EventoService {
     @Override
     public Evento convertEventoModel2Evento(EventoModel eventoModel) throws Exception {
         return eventoConverter.convertEventoModel2Evento(eventoModel);
+    }
+
+    @Override
+    public EventoModel convertEvento2EventoModel(Evento evento) {
+        return eventoConverter.convertEvento2EventoModel(evento);
     }
 
     @Override

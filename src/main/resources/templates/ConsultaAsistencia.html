@@ -60,6 +60,7 @@
               <th>Correo</th>
               <th>Teléfono</th>
               <th>Tipo</th>
+              <th>Asistencias</th>
 
 
                 <th class="text-center">Acción</th>
@@ -72,7 +73,11 @@
               <td th:text="${asistente.correo}"></td>
               <td th:text="${asistente.telefono}"></td>
               <td th:text="${asistente.tipo}"></td>
-
+              <td>
+                <select>
+                  <option th:each="eventos: ${asistente.getEventos()}" th:text="${eventos.nombre}"></option>
+                </select>
+              </td>
               <td class="text-center">
                 <a class='btn btn-info btn-xs' href="#" th:href="@{/asistentes/asistenteForm?id=__${asistente.id}__}" sec:authorize="hasAuthority('MODIFICAR')"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                 <a class="btn btn-danger btn-xs" href="#" th:href="@{/asistentes/removeAsistente?id=__${asistente.id}__}" sec:authorize="hasAuthority('ELIMINAR')"><span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>

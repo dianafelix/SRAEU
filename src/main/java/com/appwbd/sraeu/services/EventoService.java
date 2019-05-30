@@ -19,4 +19,6 @@ public interface EventoService{
 
     public abstract Evento convertEventoModel2Evento(EventoModel eventoModel) throws Exception;
 
+    public abstract EventoModel convertEvento2EventoModel(Evento evento);
+
 }

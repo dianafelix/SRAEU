@@ -1,6 +1,8 @@
 package com.appwbd.sraeu.component;
 
+import com.appwbd.sraeu.entity.Asistente;
 import com.appwbd.sraeu.entity.Lugar;
+import com.appwbd.sraeu.model.AsistenteModel;
 import com.appwbd.sraeu.model.EventoModel;
 import com.appwbd.sraeu.entity.Evento;
 import com.appwbd.sraeu.model.LugarModel;
@@ -28,42 +30,31 @@ public class EventoConverter {
         String[] fecha1 = eventoModel.getFechaI().split("T");
         Date fech1 = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(fecha1[0] + " " + fecha1[1]);
         Evento evento = new Evento();
-        List<Lugar> lugares = new ArrayList<>();
         evento.setId(eventoModel.getId());
         evento.setCupo(eventoModel.getCupo());
         evento.setNombre(eventoModel.getNombre());
         evento.setFechaI(fech1);
         evento.setFechaF(fech);
-        for(LugarModel lugarModel : eventoModel.getLugares()){
-            lugares.add(lugarService.convertLugarModel2Lugar(lugarModel));
-        }
-        evento.setLugares(lugares);
-        /*Lugar testLugar = new Lugar();
-        testLugar.setId(1);
-        testLugar.setNombre("AULA MAGNA");
-        testLugar.setDireccion("UABC");
-        evento.setLugar(testLugar);
+        evento.setLugar(new Lugar(1,"PRUEBA","PRUEBA"));
+        //evento.setLugar(lugarService.convertLugarModel2Lugar(eventoModel.getLugar()));
 
-        evento.setLugar(lugarService.findLugarById(eventoModel.getLugar()));
-        evento.setAsistentes(eventoModel.getAsistentes());*/
         return evento;
     }
 
     public EventoModel convertEvento2EventoModel(Evento evento) {
     EventoModel eventoModel = new EventoModel();
-    List<LugarModel> lugarModels = new ArrayList<>();
+    List<AsistenteModel> asistenteModels = new ArrayList();
+    LugarModel lugarModel = new LugarModel();
     eventoModel.setId(evento.getId());
     eventoModel.setCupo(evento.getCupo());
     eventoModel.setNombre(evento.getNombre());
     eventoModel.setFechaF(new SimpleDateFormat("yyyy-MM-dd hh:mm").format(evento.getFechaF()));
     eventoModel.setFechaI(new SimpleDateFormat("yyyy-MM-dd hh:mm").format(evento.getFechaI()));
-/*    eventoModel.setLugar(evento.getLugar().getId());
-    eventoModel.setLugar(evento.getLugar().getNombre());
-    eventoModel.setAsistentes(evento.getAsistentes());*/
-        for(Lugar lugar : evento.getLugares()){
-            lugarModels.add(lugarService.convertLugar2LugarModel(lugar));
-        }
-        eventoModel.setLugares(lugarModels);
+    //eventoModel.setLugar(new LugarModel(1,"PRUEBA","PRUEBA"));
+    if(eventoModel.getLugar() != null)
+        lugarModel = lugarService.convertLugar2LugarModel(evento.getLugar());
+    eventoModel.setLugar(lugarModel);
+
     return eventoModel;
     }
 }

@@ -52,7 +52,6 @@ public class EventoController {
     public String redirectEventoForm(Model model, @RequestParam(name = "id", required = false) int id) {
         EventoModel eventoModel = new EventoModel();
         lugares = new ArrayList<>();
-        /*List<AsistenteModel> asistenteModels = asistenteService.listAllAsistentes();*/
         List<LugarModel> lugarModels = lugarService.listAllLugares();
         boolean b = true;
         if(id != 0) {
@@ -60,7 +59,6 @@ public class EventoController {
             b = false;
         }
         model.addAttribute("eventoModel",eventoModel);
-        /*model.addAttribute("asistenteModels", asistenteModels);*/
         model.addAttribute("lugarModels", lugarModels);
         model.addAttribute("b",b);
         return ViewConstant.EVENTO_FORM;
@@ -69,7 +67,7 @@ public class EventoController {
     @PostMapping("/addevento")
     public String addEvento(@ModelAttribute(name = "eventoModel") EventoModel eventoModel, Model model)throws Exception {
         log.info("Method: addEvento() -- Params: " + eventoModel.toString());
-        eventoModel.setLugares(lugares);
+        eventoModel.setLugar(new LugarModel());
         if (eventoService.addEvento(eventoModel) != null)
             model.addAttribute("result", 1);
         else

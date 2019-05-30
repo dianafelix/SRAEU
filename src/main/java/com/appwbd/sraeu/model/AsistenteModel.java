@@ -1,6 +1,12 @@
 package com.appwbd.sraeu.model;
 
+import com.appwbd.sraeu.entity.Asistente;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 public class AsistenteModel {
@@ -13,6 +19,8 @@ public class AsistenteModel {
     private String telefono;
     private String lugar;
     private String tipo;
+    private List<EventoModel> eventos = new ArrayList<>();
+
 
     public AsistenteModel(){
 

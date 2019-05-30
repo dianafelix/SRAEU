@@ -28,10 +28,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http
             .authorizeRequests()
-                .antMatchers("/eventos/showEventos", "/asistents/showAsistentes", "/lugares/showLugares").hasAuthority("CONSULTAR")
-                .antMatchers("/eventos/eventoForm", "/asistents/asistenteForm", "/lugares/lugarForm").hasAnyAuthority("REGISTRAR", "MODIFICAR")
+                .antMatchers("/eventos/showEventos", "/asistentes/showAsistentes", "/lugares/showLugares").hasAuthority("CONSULTAR")
+                .antMatchers("/eventos/eventoForm", "/asistentes/asistenteForm", "/lugares/lugarForm").hasAnyAuthority("REGISTRAR", "MODIFICAR")
                 .antMatchers("/eventos/removeEvento", "/asistentes/removeAsistente", "/lugares/removeLugar").hasAuthority("ELIMINAR")
-                .antMatchers("/usuarios/*").hasAuthority("MANTENIMIENTOU")
+                .antMatchers("/usuarios/*","/tipoUsuarios/*").hasAuthority("MANTENIMIENTOU")
                 .anyRequest().permitAll()
             .and().formLogin()
                 .loginPage("/login").permitAll()

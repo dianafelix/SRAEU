@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <input type="hidden" th:field="*{id}" th:value="${id}">
                             <label class="font-weight-bold" for="email">Tipo de Usuario:</label>
-                            <input type="text" id="email" class="form-control" placeholder="TipoUsuario" th:field="*{tipo}" th:value="${tipo}">
+                            <input type="text" id="email" class="form-control" placeholder="TipoUsuario" th:field="*{tipo}" th:value="${tipo}" required>
                         </div>
                     </div>
                     <div class="row form-group">

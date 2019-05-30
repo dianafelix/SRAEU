@@ -59,20 +59,20 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="font-weight-bold" for="email">Nombre de usuario</label>
-                  <input type="text" id="email" class="form-control" placeholder="Usuario" th:field="*{username}" th:value="${username}" th:if="${b}">
+                  <input type="text" id="email" class="form-control" placeholder="Usuario" th:field="*{username}" th:value="${username}" th:if="${b}" required>
                   <input type="text" id="email" class="form-control" placeholder="Usuario" th:field="*{username}" th:value="${username}" th:if="${!b}" readonly>
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="font-weight-bold" for="email">Contraseña</label>
-                  <input type="text" id="subject" class="form-control" placeholder="Contraseña" th:field="*{password}">
+                  <input type="password" id="subject" class="form-control" placeholder="Contraseña" th:field="*{password}" required>
                 </div>
               </div>
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="font-weight-bold" for="email">Tipo de Usuario:</label>
-                  <select th:field="*{tipoUsuarioId}">
+                  <select th:field="*{tipoUsuarioId}" required>
                     <br>
                     <option th:each="tipo : ${tipos}" th:value="${tipo.id}"
                       th:text="${tipo.id+'-'+tipo.tipo}">

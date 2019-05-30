@@ -23,9 +23,7 @@ public class Lugar {
     @Column(name="direccion")
     private String direccion;
 
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "lugares", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "lugar")
     private List<Evento> eventos;
 
 
