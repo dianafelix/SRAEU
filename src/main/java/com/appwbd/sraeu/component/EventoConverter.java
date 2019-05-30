@@ -51,8 +51,10 @@ public class EventoConverter {
     eventoModel.setFechaI(new SimpleDateFormat("yyyy-MM-dd hh:mm").format(evento.getFechaI()));
     eventoModel.setLugar_id(evento.getLugar().getId());
     eventoModel.setLugar_nombre(evento.getLugar().getNombre());
-    for(Asistente asistente : evento.getAsistentes()){
-        asistenteNames.add(asistente.getNombre() + " " + asistente.getApellido());
+    if(evento.getAsistentes() != null) {
+        for (Asistente asistente : evento.getAsistentes()) {
+            asistenteNames.add(asistente.getNombre() + " " + asistente.getApellido());
+        }
     }
     eventoModel.setAsistentes(asistenteNames);
 
