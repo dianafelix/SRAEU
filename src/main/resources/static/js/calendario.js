@@ -193,14 +193,15 @@ function getCellValues(dia) {
             }
         }
     }
+    if(dia < 10)
+        dia = "0" + dia;
     var fecha = dia + "-" + mes;
-    alert(fecha);
 
     $.ajax({
         type : 'POST',
         url : '/eventos/EventosDelDia',
-        data : JSON.stringify({'fecha' : fecha}),
-        //data : fecha,
+        //data : JSON.stringify({'fecha' : fecha}),
+        data : fecha,
         processData: false,
         contentType: 'application/json',
         beforeSend: function(xhr){
@@ -208,12 +209,20 @@ function getCellValues(dia) {
             xhr.setRequestHeader("Content-Type", "application/json");
         },
         success: function(result){
-            location.reload();
+            alert(result.length);
+            var texto = "";
+            for(var i = 0; i < result.length; i++) {
+                texto += "<b>" + result[i].nombre + "</b><br>"
+                    + result[i].fechaI  + " " + result[i].fechaF + "<br>"
+                    + result[i].lugar_nombre + "<b>Capacidad:"
+                    + result[i].cupo + "</b><br><br>";
+            }
+            dialog = document.getElementById('eventos');
+            dialog.innerHTML = texto;
+            document.getElementById('ms').show();
         },
         error: function(e){
             alert("Error: " + e);
         }
     });
-
-    document.getElementById('ms').show();
 }

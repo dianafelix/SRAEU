@@ -27,6 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
+                .csrf().disable()
             .authorizeRequests()
                 .antMatchers("/eventos/showEventos", "/asistentes/showAsistentes", "/lugares/showLugares").hasAuthority("CONSULTAR")
                 .antMatchers("/eventos/eventoForm", "/asistentes/asistenteForm", "/lugares/lugarForm").hasAnyAuthority("REGISTRAR", "MODIFICAR")

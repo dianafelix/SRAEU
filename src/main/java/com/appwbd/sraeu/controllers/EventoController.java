@@ -97,22 +97,25 @@ public class EventoController {
     }
 
     @RequestMapping(value = "/EventosDelDia", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody void getEventosDelDia(@RequestBody String fecha) {
-        log.info("Method getEventosDelDia() -- Inicio,  Fecha a buscar:" + fecha);
+    public @ResponseBody List<EventoModel> getEventosDelDia(@RequestBody String fecha) {
+        log.info("Method getEventosDelDia() -- Inicio,  Fecha a buscar: " + fecha);
         Date fechaB;
         List<EventoModel> eventosDelDia = new ArrayList();
         try {
             fechaB = new SimpleDateFormat("dd-MM-yyyy").parse(fecha);
             for(EventoModel evento : eventoService.listAllEventos()) {
-                Date fechaI = new SimpleDateFormat("dd-MM-yyyy").parse(evento.getFechaI());
-                Date fechaF = new SimpleDateFormat("dd-MM-yyyy").parse(evento.getFechaF());
-                if (fechaI.equals(fechaB) || fechaF.equals(fechaB)) {
+                Date fechaI = new SimpleDateFormat("yyyy-MM-dd").parse(evento.getFechaI());
+                Date fechaF = new SimpleDateFormat("yyyy-MM-dd").parse(evento.getFechaF());
+                if ((fechaB.after(fechaI) || fechaB.compareTo(fechaI) == 0)
+                        && (fechaB.before(fechaF) || fechaB.compareTo(fechaF) == 0)) {
                     eventosDelDia.add(evento);
+
                 }
             }
         } catch (ParseException e) {
 
         }
-        log.info("Method getEventosDelDia() -- Fin, Cantidad de eventos: " + eventosDelDia.size());
+        log.info("Method getEventosDelDia() -- Fin");
+        return eventosDelDia;
     }
 }

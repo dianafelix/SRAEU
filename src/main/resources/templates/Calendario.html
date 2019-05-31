@@ -55,14 +55,9 @@
         <div id="calendario">
           <dialog id="ms">
             <p> Eventos </p>
-            <br>
+            <div id="eventos">
 
-            <p th:each="fila:${lista}"
-
-               th:text="${'nombre: '+fila.getNombre()+ ' '+'fecha: '+' '+fila.getFechaI()+'--' + fila.getFechaF()+' '+'Lugar: '+' '+fila.getLugar()+' '+'cupo: '+' '+fila.getCupo()}">
-
-              valor </br>  </p>
-            </br>
+            </div>
             <button id="close" onclick="document.getElementById('ms').close()">CERRAR</button>
           </dialog>
           <div id="anterior" onclick="mesantes()"></div>
