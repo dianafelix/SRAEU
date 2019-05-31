@@ -62,7 +62,7 @@
                                 </ul>
                             </li>
                             <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/login}">Inicio sesión</a></li>
-                            <li sec:authorize="isAuthenticated()" class="has-children" >
+                            <li sec:authorize="isAuthenticated()" class="has-children usuario" >
                                 <span sec:authentication="name"></span>
                                 <ul class="dropdown">
                                     <li>

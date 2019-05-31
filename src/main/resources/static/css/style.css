@@ -1656,3 +1656,9 @@ input.add-event-edit:-ms-input-placeholder {
 
  */
 /*termina */
+
+.usuario {
+  float: left;
+  margin-left: -500px;
+  margin-top: 10px;
+}

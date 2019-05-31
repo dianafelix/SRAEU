@@ -211,7 +211,7 @@ function getCellValues(dia) {
         success: function(result){
             var texto = "";
             for(var i = 0; i < result.length; i++) {
-                texto += "<b>" + result[i].nombre + "</b><br>"
+                texto += "<a href='/asistencias/asistenciaForm/" + result[i].id +"'><b>" + result[i].nombre + "</a></b><br>"
                     + result[i].fechaI  + " " + result[i].fechaF + "<br>"
                     + result[i].lugar_nombre + "<b>Capacidad:"
                     + result[i].cupo + "</b><br><br>";
