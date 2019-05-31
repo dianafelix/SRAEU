@@ -23,12 +23,16 @@
                             <li>
                                 <a href="#" th:href="@{/inicio}">Inicio</a>
                             </li>
+                            <li>
+                            <a href="#" th:href="@{/eventos/calendario}">Calendario</a>
+                            </li>
                             <li class="has-children" sec:authorize="isAuthenticated()">
                                 <a href="#">Asistentes</a>
                                 <ul class="dropdown">
                                     <li sec:authorize="hasAuthority('CONSULTAR')"><a href="#" th:href="@{/asistentes/showAsistentes}">Consulta</a></li>
                                     <li sec:authorize="hasAuthority('REGISTRAR')"><a href="#" th:href="@{/asistentes/asistenteForm?id=0}">Registro</a></li>
                                 </ul>
+
                             </li>
                             <li sec:authorize="isAuthenticated()" class="has-children">
                                 <a href="#">Eventos</a>

@@ -93,6 +93,8 @@ public class EventoController {
 
     @GetMapping("/calendario")
     public String calendario(Model model) {
+        List<EventoModel> lista= eventoService.listAllEventos();
+        model.addAttribute("lista",lista);
         return ViewConstant.CALENDARIO;
     }
 
