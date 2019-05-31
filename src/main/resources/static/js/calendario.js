@@ -209,7 +209,6 @@ function getCellValues(dia) {
             xhr.setRequestHeader("Content-Type", "application/json");
         },
         success: function(result){
-            alert(result.length);
             var texto = "";
             for(var i = 0; i < result.length; i++) {
                 texto += "<b>" + result[i].nombre + "</b><br>"
